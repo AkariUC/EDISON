@@ -1,7 +1,7 @@
 ## Name
 EDISON
 ====
-![logo](./edison_logo.png)
+![logo](./pic/light_edison_yellow.png)
 </br>
 
 ## Overview
@@ -28,14 +28,14 @@ PHPを利用して電球管理アプリケーションを制作
             ```
             DROP TABLE IF EXISTS member;
             CREATE TABLE member (
-                id          MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
                 username   	VARCHAR(50),
                 password   	VARCHAR(128),
                 name     	VARCHAR(50),
                 reg_date   	DATETIME,
                 cancel_date DATETIME,
                 PRIMARY KEY (id)
-            );
+            ) ENGINE=INNODB;
             ```
             - username      : メールアドレスを格納
             - name          : 自分の名前
@@ -47,12 +47,13 @@ PHPを利用して電球管理アプリケーションを制作
             DROP TABLE IF EXISTS light_installation;
             CREATE TABLE light_installation (
                 id          MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
-                member_id   INT,
+                member_id   INT UNSIGNED NOT NULL,
                 light_place VARCHAR(50),
                 light_date  DATETIME,
                 light_use   INT,
-                FOREIGN KEY (member_id) REFERENCES member(id)
-            );
+                PRIMARY KEY (id),
+                FOREIGN KEY(member_id) REFERENCES member(id) ON UPDATE CASCADE ON DELETE CASCADE
+            )ENGINE=INNODB;
             ```
             - member_id   : 所持しているユーザのid (foreign key で制約)
             - light_place : 設置している場所
@@ -67,7 +68,7 @@ PHPを利用して電球管理アプリケーションを制作
                 light_last  INT,
                 light_name  VARCHAR(50),
                 PRIMARY KEY (id)
-            );
+            )ENGINE=INNODB;
             ```
             - light_name : 電球の名前
             - light_last : 電球がどれだけもつか([hour]単位で入力してもらう)
@@ -80,4 +81,4 @@ PHPを利用して電球管理アプリケーションを制作
             INSERT  INTO light (id, light_last, light_name) VALUES(  2,  7750, '電球型蛍光灯');
             INSERT  INTO light (id, light_last, light_name) VALUES(  3, 30000, 'LED電球');
             INSERT  INTO light (id, light_last, light_name) VALUES(  4,  2000, 'ハロゲン電球');
-            ```# EDISON
+            ```
