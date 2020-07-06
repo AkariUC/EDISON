@@ -1,7 +1,7 @@
 ## Name
 EDISON
 ====
-![logo](.edison_logo.png)
+![logo](./edison_logo.png)
 </br>
 
 ## Overview
