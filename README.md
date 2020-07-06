@@ -42,6 +42,21 @@ PHPを利用して電球管理アプリケーションを制作
             - reg_date      : 登録日
             - cancel_date   : 退会日
         
+        - 仮会員情報テーブル
+            ```
+            DROP TABLE IF EXISTS premember;
+            CREATE TABLE premember (
+                id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                username   	VARCHAR(50),
+                password   	VARCHAR(128),
+                name     	VARCHAR(50),
+                link_pass   VARCHAR(50),
+                reg_date   	DATETIME,
+                PRIMARY KEY (id)
+            ) ENGINE=INNODB;
+            ```
+            - link_pass : 本人確認用URLの保持
+
         - 電球設置テーブル
             ```
             DROP TABLE IF EXISTS light_installation;
