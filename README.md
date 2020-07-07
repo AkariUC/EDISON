@@ -92,8 +92,8 @@ PHPを利用して電球管理アプリケーションを制作
                 - Insert文を増やすことで新しい種類にも対応
                 - 今回対応するのは大まかな種類のみであり，実際に実装する場合にはより詳細なデータを作るべきである
             ```
-            INSERT  INTO light (id, light_last, light_name) VALUES(  1,  1500, '白熱電球');
-            INSERT  INTO light (id, light_last, light_name) VALUES(  2,  7750, '電球型蛍光灯');
-            INSERT  INTO light (id, light_last, light_name) VALUES(  3, 30000, 'LED電球');
-            INSERT  INTO light (id, light_last, light_name) VALUES(  4,  2000, 'ハロゲン電球');
+            INSERT  INTO light_detail (id, light_last, light_name) VALUES(  1,  1500, '白熱電球');
+            INSERT  INTO light_detail (id, light_last, light_name) VALUES(  2,  7750, '電球型蛍光灯');
+            INSERT  INTO light_detail (id, light_last, light_name) VALUES(  3, 30000, 'LED電球');
+            INSERT  INTO light_detail (id, light_last, light_name) VALUES(  4,  2000, 'ハロゲン電球');
             ```
