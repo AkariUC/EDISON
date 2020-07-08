@@ -119,7 +119,7 @@ require_once(_SMARTY_LIBS_DIR . "Smarty.class.php");
 // 自作クラスファイルの読み込み
 //----------------------------------------------------
 // 読み込みの順番を変えると動作しません。
-// require_once( _CLASS_DIR      . "BaseController.php");
+require_once( _CLASS_DIR      . "BaseController.php");
 // require_once( _CLASS_DIR      . "BaseModel.php");
 require_once( _CLASS_DIR      . "Auth.php");
 // require_once( _CLASS_DIR      . "MemberController.php");
