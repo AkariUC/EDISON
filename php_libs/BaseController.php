@@ -103,59 +103,23 @@ class BaseController {
     //----------------------------------------------------
     // 会員情報入力項目と入力ルールの設定
     //----------------------------------------------------
-//    public function make_form_controle(){
-//        $KenModel = new KenModel;
-//        $ken_array = $KenModel->get_ken_data();
-//        $options = [
-//            'format'    => 'Ymd',
-//            'minYear'   => 1950,
-//            'maxYear'   => date("Y"),
-//        ];
-//        $username =  $this->form->addElement('text',  'username',  ['size' => 30], ['label' => 'メール（ユーザーネーム）'] );
-//        $password =  $this->form->addElement('password',  'password',  ['size' => 30], ['label' => 'パスワード'] );
-//        $last_name = $this->form->addElement('text',  'last_name', ['size' => 30], ['label' => '氏'] );
-//        $first_name= $this->form->addElement('text',  'first_name',['size' => 30], ['label' => '名'] );
-//        $birthday =  $this->form->addElement('date',  'birthday',  null, ['label' => '誕生日'] + $options);
-//        $ken =       $this->form->addElement('select','ken',       null, ['label' => '県名', 'options' => $ken_array] );
-//
-//        $username->addRule('required', 'メールアドレスを入力してください。', null, HTML_QuickForm2_Rule::SERVER);
-//        $username->addRule('email',  'メールアドレスの形式が不正です。',    null, HTML_QuickForm2_Rule::SERVER);
-//        $password->addRule('required',  'パスワードを入力してください。',      null, HTML_QuickForm2_Rule::SERVER);
-//        $password->addRule('length',  'パスワードは8文字から16文字の範囲で入力してください。', [8, 16], HTML_QuickForm2_Rule::SERVER);
-//        $password->addRule('regex',  'パスワードは半角の英数字、記号（ _ - ! ? # $ % & ）を使ってください。', '/^[a-zA-z0-9_\-!?#$%&]*$/', HTML_QuickForm2_Rule::SERVER);
-//        $last_name->addRule('required', '氏を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
-//        $first_name->addRule('required','名を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
-//
-//        $this->form->addRecursiveFilter('trim');
-//
-//    }
+    public function make_form_controle(){
+        $username = $this->form->addElement('text',  'username',  ['size' => 30], ['label' => 'メール（ユーザーネーム）'] );
+        $password = $this->form->addElement('password',  'password',  ['size' => 30], ['label' => 'パスワード'] );
+        $name     = $this->form->addElement('text',  'last_name', ['size' => 30], ['label' => '氏'] );
 
-public function make_form_controle(){
-    $KenModel = new KenModel;
-    $ken_array = $KenModel->get_ken_data();
-    $options = [
-        'format'    => 'Ymd',
-        'minYear'   => 1950,
-        'maxYear'   => date("Y"),
-    ];
-    $username =  $this->form->addElement('text',  'username',  ['size' => 30], ['label' => 'メール（ユーザーネーム）'] );
-    $password =  $this->form->addElement('password',  'password',  ['size' => 30], ['label' => 'パスワード'] );
-    $last_name = $this->form->addElement('text',  'last_name', ['size' => 30], ['label' => '氏'] );
-    $first_name= $this->form->addElement('text',  'first_name',['size' => 30], ['label' => '名'] );
-    $birthday =  $this->form->addElement('date',  'birthday',  null, ['label' => '誕生日'] + $options);
-    $ken =       $this->form->addElement('select','ken',       null, ['label' => '県名', 'options' => $ken_array] );
+        $username->addRule('required', 'メールアドレスを入力してください。', null, HTML_QuickForm2_Rule::SERVER);
+        $username->addRule('email',  'メールアドレスの形式が不正です。',    null, HTML_QuickForm2_Rule::SERVER);
 
-    $username->addRule('required', 'メールアドレスを入力してください。', null, HTML_QuickForm2_Rule::SERVER);
-    $username->addRule('email',  'メールアドレスの形式が不正です。',    null, HTML_QuickForm2_Rule::SERVER);
-    $password->addRule('required',  'パスワードを入力してください。',      null, HTML_QuickForm2_Rule::SERVER);
-    $password->addRule('length',  'パスワードは8文字から16文字の範囲で入力してください。', [8, 16], HTML_QuickForm2_Rule::SERVER);
-    $password->addRule('regex',  'パスワードは半角の英数字、記号（ _ - ! ? # $ % & ）を使ってください。', '/^[a-zA-z0-9_\-!?#$%&]*$/', HTML_QuickForm2_Rule::SERVER);
-    $last_name->addRule('required', '氏を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
-    $first_name->addRule('required','名を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
+        $password->addRule('required',  'パスワードを入力してください。',      null, HTML_QuickForm2_Rule::SERVER);
+        $password->addRule('length',  'パスワードは8文字から16文字の範囲で入力してください。', [8, 16], HTML_QuickForm2_Rule::SERVER);
+        $password->addRule('regex',  'パスワードは半角の英数字、記号（ _ - ! ? # $ % & ）を使ってください。', '/^[a-zA-z0-9_\-!?#$%&]*$/', HTML_QuickForm2_Rule::SERVER);
 
-    $this->form->addRecursiveFilter('trim');
+        $last_name->addRule('required', 'お名前を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
 
-}
+        $this->form->addRecursiveFilter('trim');
+
+    }
     
     
     //----------------------------------------------------
@@ -169,13 +133,14 @@ public function make_form_controle(){
 
         $add_pageID = "";
         if(isset($_GET['pageID']) && $_GET['pageID'] != ""){
-            $add_pageID = '&pageID=' . $_GET['pageID'];
+            $add_pageID         = '&pageID=' . $_GET['pageID'];
             $_SESSION['pageID'] = $_GET['pageID'];
         }else if(isset($_SESSION['pageID']) && $_SESSION['pageID'] != ""){
             $add_pageID = '&pageID=' . $_SESSION['pageID'];
         }
         return $add_pageID;
     }
+
 
     //----------------------------------------------------
     // ページ分割処理
@@ -205,6 +170,7 @@ public function make_form_controle(){
         return [$data, $links];
     }    
 
+
     //----------------------------------------------------
     // デバッグ用表示処理
     //----------------------------------------------------
@@ -228,4 +194,6 @@ public function make_form_controle(){
             $this->view->debugging = _DEBUG_MODE;
         }
     }
+
+
 }
