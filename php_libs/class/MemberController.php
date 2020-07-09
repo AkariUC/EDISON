@@ -91,6 +91,7 @@ class MemberController extends BaseController
         }
     }
 
+
     //----------------------------------------------------
     // トップ画面
     //----------------------------------------------------
@@ -102,6 +103,7 @@ class MemberController extends BaseController
         $this->file = 'member_top.tpl';
         $this->view_display();
     }
+
 
     //----------------------------------------------------
     // 会員情報画面
