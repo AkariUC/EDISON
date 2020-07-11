@@ -9,7 +9,6 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-        <script type="text/javascript" src="/js/login.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/login.css">
 
         <script type="text/javascript" src="js/quickform.js" async></script>
@@ -21,12 +20,6 @@
                 <h1>Create User</h1>
                 <table>
                     <tr>
-                        <div class="form-footer">
-                            <a href="{$SCRIPT_NAME}">To Login Page</a>
-                        </div>
-                        <br><br>
-                        {$disp_login_state}
-
                         <td>
                             {$message}
                             <form {$form.attributes}>
@@ -36,7 +29,7 @@
                                         <td style="vertical-align:top; text-align:right;">{$form.username.label}：</td>
                                         <td style="text-align:left;">
                                             {if isset($form.username.error)}
-                                            <div style="color:red; font-size: smaller;">{$form.username.error}</div>
+                                            <div style="color:#ee3e52;">{$form.username.error}</div>
                                             {/if}
                                             {$form.username.html}</td>
                                     </tr>
@@ -44,7 +37,7 @@
                                         <td style="vertical-align:top; text-align:right;">{$form.password.label}：</td>
                                         <td style="text-align:left;">
                                             {if isset($form.password.error)}
-                                            <div style="color:red; font-size: smaller;">{$form.password.error}</div>
+                                            <div style="color:#ee3e52;">{$form.password.error}</div>
                                             {/if}
                                             {$form.password.html}</td>
                                     </tr>
@@ -52,7 +45,7 @@
                                         <td style="vertical-align:top; text-align:right;">{$form.last_name.label}：</td>
                                         <td style="text-align:left;">
                                             {if isset($form.last_name.error)}
-                                            <div style="color:red; font-size: smaller;">{$form.last_name.error}</div>
+                                            <div style="color:#ee3e52;">{$form.last_name.error}</div>
                                             {/if}
                                             {$form.last_name.html}</td>
                                     </tr>
@@ -60,7 +53,7 @@
                                         <td style="vertical-align:top; text-align:right;">{$form.first_name.label}：</td>
                                         <td style="text-align:left;">
                                             {if isset($form.first_name.error)}
-                                            <div style="color:red; font-size: smaller;">{$form.first_name.error}</div>
+                                            <div style="color:#ee3e52;">{$form.first_name.error}</div>
                                             {/if}
                                             {$form.first_name.html}</td>
                                     </tr>
@@ -68,7 +61,7 @@
                                         <td style="vertical-align:top; text-align:right;">{$form.birthday.label}：</td>
                                         <td style="text-align:left;">
                                             {if isset($form.birthday.error)}
-                                            <div style="color:red; font-size: smaller;">{$form.birthday.error}</div><br>
+                                            <div style="color:#ee3e52;">{$form.birthday.error}</div><br>
                                             {/if}
                                             {$form.birthday.Y.html}{$form.birthday.m.html}{$form.birthday.d.html}</td>
                                     </tr>
@@ -76,10 +69,13 @@
                                         <td style="vertical-align:top; text-align:right;">{$form.ken.label}：</td>
                                         <td style="text-align:left;">
                                             {if isset($form.ken.error)}
-                                            <div style="color:red; font-size: smaller;">{$form.ken.error}</div><br>
+                                            <div style="color:#ee3e52;">{$form.ken.error}</div><br>
                                             {/if}
                                             {$form.ken.html}</td>
                                     </tr>
+
+                                    <br><br><br>
+
                                     <tr>
                                         <td>&nbsp; </td>
                                         <td>
@@ -95,11 +91,16 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <br>
+                                <br><br><br><br>
                             </form>
                         </td>
                     </tr>
                 </table>
+                {$disp_login_state}
+                <div class="form-footer">
+                    <a href="{$SCRIPT_NAME}">To Login Page</a>
+                </div>
+                <br><br><br><br>
             </div>
         </div>
         </div>
