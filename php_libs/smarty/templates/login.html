@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>{$title}</title>
+</head>
+
+<body>
+    <div align="center">
+        <hr>
+        <strong>{$title}</strong>
+        <hr>
+
+        <table>
+            <tr>
+                <td>
+                    <!-- <form {$form.attributes}> -->
+                    <form>
+                        <table border="1" width="500" cellspacing="0" bordercolor="#111111">
+                            <br><br><br>
+                            <tr>
+                                <td>
+                                    <div style="text-align: right">1</div>
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="text-align: right">2</div>
+                                </td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="hidden" name="type" value="{$type}">
+                                    <div style="text-align:center;">{$form.submit.html}</div>
+                                    <br>
+                                    <div style="color:red; font-size: smaller;"> {$auth_error_mess} </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div align="right">
+        <table>
+            <p><a href="{$SCRIPT_NAME}?type=regist&action=form">NewAccout...</a></p>
+        </table>
+    </div>
+    {if ($debug_str)}
+    <pre>{$debug_str}</pre>
+    {/if}
+</body>
+
+</html>

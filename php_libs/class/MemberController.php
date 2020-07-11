@@ -71,7 +71,7 @@ class MemberController extends BaseController
         $this->form->addElement('text', 'username',     ['size' => 15, 'maxlength' => 50], [ 'label' => 'メールアドレス']);
         $this->form->addElement('password', 'password', ['size' => 15, 'maxlength' => 50], [ 'label' => 'パスワード']);
         $this->form->addElement('submit', 'submit', ['value' =>'ログイン']);
-        $this->title = 'ログイン画面';
+        $this->title = 'login';
         $this->next_type = 'authenticate';
         $this->file = "login.tpl";
         $this->view_display();
