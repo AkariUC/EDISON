@@ -9,7 +9,7 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="/css/login.css">
+        <link rel="stylesheet" type="text/css" href="/css/.css">
 
         <script type="text/javascript" src="js/quickform.js" async></script>
     </head>
@@ -42,36 +42,12 @@
                                             {$form.password.html}</td>
                                     </tr>
                                     <tr>
-                                        <td style="vertical-align:top; text-align:right;">{$form.last_name.label}：</td>
+                                        <td style="vertical-align:top; text-align:right;">{$form.name.label}：</td>
                                         <td style="text-align:left;">
-                                            {if isset($form.last_name.error)}
-                                            <div style="color:#ee3e52;">{$form.last_name.error}</div>
+                                            {if isset($form.name.error)}
+                                            <div style="color:#ee3e52;">{$form.name.error}</div>
                                             {/if}
-                                            {$form.last_name.html}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="vertical-align:top; text-align:right;">{$form.first_name.label}：</td>
-                                        <td style="text-align:left;">
-                                            {if isset($form.first_name.error)}
-                                            <div style="color:#ee3e52;">{$form.first_name.error}</div>
-                                            {/if}
-                                            {$form.first_name.html}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="vertical-align:top; text-align:right;">{$form.birthday.label}：</td>
-                                        <td style="text-align:left;">
-                                            {if isset($form.birthday.error)}
-                                            <div style="color:#ee3e52;">{$form.birthday.error}</div><br>
-                                            {/if}
-                                            {$form.birthday.Y.html}{$form.birthday.m.html}{$form.birthday.d.html}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="vertical-align:top; text-align:right;">{$form.ken.label}：</td>
-                                        <td style="text-align:left;">
-                                            {if isset($form.ken.error)}
-                                            <div style="color:#ee3e52;">{$form.ken.error}</div><br>
-                                            {/if}
-                                            {$form.ken.html}</td>
+                                            {$form.name.html}</td>
                                     </tr>
 
                                     <br><br><br>
