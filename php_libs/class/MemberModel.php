@@ -17,7 +17,7 @@ class MemberModel extends BaseModel {
             $this->pdo->commit();
         } catch (PDOException $Exception) {
             $this->pdo->rollBack();
-            print "エラー：" . $Exception->getMessage();
+            print "ERROR：" . $Exception->getMessage();
         }
     }
 
@@ -33,7 +33,7 @@ class MemberModel extends BaseModel {
             $stmh->execute();
             $count = $stmh->rowCount();
         } catch (PDOException $Exception) {
-            print "エラー：" . $Exception->getMessage();
+            print "ERROR：" . $Exception->getMessage();
         }
         if($count >= 1){
             return true;
@@ -55,7 +55,7 @@ class MemberModel extends BaseModel {
             $stmh->execute();
             $data = $stmh->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $Exception) {
-            print "エラー：" . $Exception->getMessage();
+            print "ERROR：" . $Exception->getMessage();
         }
         return $data;
     }
@@ -73,7 +73,7 @@ class MemberModel extends BaseModel {
             $stmh->execute();
             $data = $stmh->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $Exception) {
-            print "エラー：" . $Exception->getMessage();
+            print "ERROR：" . $Exception->getMessage();
         }
         return $data;
     }
@@ -101,7 +101,7 @@ class MemberModel extends BaseModel {
             //print "データを" . $stmh->rowCount() . "件、更新しました。<br>";
         } catch (PDOException $Exception) {
             $this->pdo->rollBack();
-            print "エラー：" . $Exception->getMessage();
+            print "ERROR：" . $Exception->getMessage();
         }
     }
 
@@ -120,7 +120,7 @@ class MemberModel extends BaseModel {
             //print "データを" . $stmh->rowCount() . "件、削除しました。<br>";
         } catch (PDOException $Exception) {
             $this->pdo->rollBack();
-            print "エラー：" . $Exception->getMessage();
+            print "ERROR：" . $Exception->getMessage();
         }
     }
     
