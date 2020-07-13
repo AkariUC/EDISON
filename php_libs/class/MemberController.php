@@ -23,6 +23,7 @@ class MemberController extends BaseController
     }
 
 
+
     //----------------------------------------------------
     // 会員用メニュー
     //----------------------------------------------------
@@ -45,6 +46,7 @@ class MemberController extends BaseController
     }
 
 
+
     //----------------------------------------------------
     // ゲスト用メニュー
     //----------------------------------------------------
@@ -61,6 +63,7 @@ class MemberController extends BaseController
                 $this->screen_login();
         }
     }
+
 
 
     //----------------------------------------------------
@@ -92,6 +95,7 @@ class MemberController extends BaseController
     }
 
 
+
     //----------------------------------------------------
     // トップ画面
     //----------------------------------------------------
@@ -102,6 +106,7 @@ class MemberController extends BaseController
         $this->file = 'member_top.tpl';
         $this->view_display();
     }
+
 
 
     //----------------------------------------------------
@@ -182,6 +187,8 @@ class MemberController extends BaseController
         $this->form->addElement('reset', 'reset', ['value' =>'cansel']);
         $this->view_display();
     }
+
+
 
     //----------------------------------------------------
     // 会員情報の修正
@@ -272,6 +279,7 @@ class MemberController extends BaseController
     }
 
 
+
     //----------------------------------------------------
     // 削除画面
     //----------------------------------------------------
@@ -282,18 +290,17 @@ class MemberController extends BaseController
         if ($this->action == "confirm") {
             if ($this->is_system) {
                 $_SESSION[_MEMBER_AUTHINFO] = $MemberModel->get_member_data_id($_GET['id']);
-                $this->message = "[削除する]をクリックすると　";
-                $this->message .= htmlspecialchars($_SESSION[_MEMBER_AUTHINFO]['last_name'], ENT_QUOTES);
-                $this->message .= htmlspecialchars($_SESSION[_MEMBER_AUTHINFO]['first_name'], ENT_QUOTES);
+                $this->message = " delete をクリックすると　";
+                $this->message .= htmlspecialchars($_SESSION[_MEMBER_AUTHINFO]['name'], ENT_QUOTES);
                 $this->message .= "さん　の会員情報を削除します。";
-                $this->form->addElement('submit', 'submit', ['value' => '削除する']);
+                $this->form->addElement('submit', 'submit', ['value' => 'Delete']);
             } else {
-                $this->message = "[退会する]をクリックすると会員情報を削除して退会します。";
-                $this->form->addElement('submit', 'submit', ['value' => '退会する']);
+                $this->message = " delete をクリックすると会員情報を削除して退会します。";
+                $this->form->addElement('submit', 'submit', ['value' => 'Delete']);
             }
             $this->next_type = 'delete';
             $this->next_action = 'complete';
-            $this->title = '削除確認画面';
+            $this->title = 'Delete';
             $this->file = 'delete_form.tpl';
         } else {
             if ($this->action == "complete") {
@@ -304,7 +311,7 @@ class MemberController extends BaseController
                     $this->auth->logout();
                 }
                 $this->message = "会員情報を削除しました。";
-                $this->title = '削除完了画面';
+                $this->title = 'Delete';
                 $this->file = 'message.tpl';
             }
         }
