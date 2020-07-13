@@ -16,12 +16,12 @@ class PrememberController extends BaseController {
                 $this->message = '登録を完了しました。トップページよりログインしてください。';
             }else{
             // パラメータが合致しない
-                $this->title = 'エラー画面';
+                $this->title = 'Error';
                 $this->message = 'このURLは無効です。';
             }
         }else{
         // 必要なパラメータがない
-            $this->title = 'エラー画面';
+            $this->title = 'Error';
             $this->message = 'このURLは無効です。';
         }
         $this->file = 'premember.tpl'; 
