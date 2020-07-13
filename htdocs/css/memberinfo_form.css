@@ -108,49 +108,13 @@ form {
     border-bottom: 1px dotted #8c8c8c;
 }
 
-input[type="username"]:hover {
+input :hover {
     box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
     border: 2px solid #FFF !important;
     outline: 0;
 }
 
-input[type="password"]:hover {
-    box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
-    border: 2px solid #FFF !important;
-    outline: 0;
-}
-
-input[type="last_name"]:hover {
-    box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
-    border: 2px solid #FFF !important;
-    outline: 0;
-}
-
-input[type="first_name"]:hover {
-    box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
-    border: 2px solid #FFF !important;
-    outline: 0;
-}
-
-input[type="birthday.Y"]:hover {
-    box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
-    border: 2px solid #FFF !important;
-    outline: 0;
-}
-
-input[type="birthday.m"]:hover {
-    box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
-    border: 2px solid #FFF !important;
-    outline: 0;
-}
-
-input[type="birthday.d"]:hover {
-    box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
-    border: 2px solid #FFF !important;
-    outline: 0;
-}
-
-input[type="ken"]:hover {
+.input_form input:hover {
     box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
     border: 2px solid #FFF !important;
     outline: 0;

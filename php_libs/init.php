@@ -126,7 +126,5 @@ require_once( _CLASS_DIR      . "MemberController.php");
 require_once( _CLASS_DIR      . "MemberModel.php");
 // require_once( _CLASS_DIR      . "PrememberController.php");
 // require_once( _CLASS_DIR      . "PrememberModel.php");
-// require_once( _CLASS_DIR      . "SystemController.php");
-// require_once( _CLASS_DIR      . "SystemModel.php");
 
 ?>
