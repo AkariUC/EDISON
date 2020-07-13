@@ -97,8 +97,7 @@ class MemberController extends BaseController
     //----------------------------------------------------
     public function screen_top()
     {
-        $this->view->assign('last_name', $_SESSION[_MEMBER_AUTHINFO]['last_name']);
-        $this->view->assign('first_name', $_SESSION[_MEMBER_AUTHINFO]['first_name']);
+        $this->view->assign('name', $_SESSION[_MEMBER_AUTHINFO]['name']);
         $this->title = 'Edison_Top';
         $this->file = 'member_top.tpl';
         $this->view_display();
@@ -125,7 +124,7 @@ class MemberController extends BaseController
             $this->title = 'Create account';
             $this->next_type = 'regist';
             $this->next_action = 'confirm';
-            $btn = 'To confirmation screen';
+            $btn = 'confirm';
         } else {
             if ($this->action == "confirm") {
                 $this->title = 'Confirmation screen';
@@ -139,7 +138,7 @@ class MemberController extends BaseController
                     $this->title = 'Create account';
                     $this->next_type = 'regist';
                     $this->next_action = 'confirm';
-                    $btn = 'To confirmation screen';
+                    $btn = 'confirm';
                 } else {
                     if ($this->action == "complete" && isset($_POST['submit']) && $_POST['submit'] == 'Sign Up') {
                         // データベースを操作します。
@@ -152,7 +151,7 @@ class MemberController extends BaseController
                             $this->message = "Email address is already registered now";
                             $this->next_type = 'regist';
                             $this->next_action = 'confirm';
-                            $btn = 'To confirmation screen';
+                            $btn = 'confirm';
                         } else {
                             // システム側から利用するときに利用
                             if ($this->is_system && is_object($auth)) {
@@ -170,7 +169,7 @@ class MemberController extends BaseController
                                 $this->mail_to_premember($userdata);
                                 $this->title = 'Send mail...';
                                 $this->message = "登録されたメールアドレスへ確認のためのメールを送信しました。<br>";
-                                $this->message .= "メール本文に記載されているURLにアクセスして登録を完了してください。<br>";
+                                $this->message .= "メール本文に記載されているURLにアクセスして<br>登録を完了してください。<br>";
                             }
                             $this->file = "message.tpl";
                         }
@@ -180,7 +179,7 @@ class MemberController extends BaseController
         }
         $this->form->addElement('submit', 'submit', ['value' =>$btn]);
         $this->form->addElement('submit', 'submit2', ['value' =>$btn2]);
-        $this->form->addElement('reset', 'reset', ['value' =>'取り消し']);
+        $this->form->addElement('reset', 'reset', ['value' =>'cansel']);
         $this->view_display();
     }
 
@@ -199,20 +198,11 @@ class MemberController extends BaseController
         if ($this->is_system && $this->action == "form") {
             $_SESSION[_MEMBER_AUTHINFO] = $MemberModel->get_member_data_id($_GET['id']);
         }
-        // フォーム要素のデフォルト値を設定
-        $date_defaults = [
-            'Y' => substr($_SESSION[_MEMBER_AUTHINFO]['birthday'], 0, 4),
-            'm' => substr($_SESSION[_MEMBER_AUTHINFO]['birthday'], 4, 2),
-            'd' => substr($_SESSION[_MEMBER_AUTHINFO]['birthday'], 6, 2),
-        ];
 
         $this->form->addDataSource(new HTML_QuickForm2_DataSource_Array(
             [
                 'username' => $_SESSION[_MEMBER_AUTHINFO]['username'],
-                'last_name' => $_SESSION[_MEMBER_AUTHINFO]['last_name'],
-                'first_name' => $_SESSION[_MEMBER_AUTHINFO]['first_name'],
-                'ken' => $_SESSION[_MEMBER_AUTHINFO]['ken'],
-                'birthday' => $date_defaults,
+                'name' => $_SESSION[_MEMBER_AUTHINFO]['last_name'],
             ]
         ));
 
@@ -224,37 +214,37 @@ class MemberController extends BaseController
         }
 
         if ($this->action == "form") {
-            $this->title = '更新画面';
+            $this->title = 'Correct account';
             $this->next_type = 'modify';
             $this->next_action = 'confirm';
-            $btn = '確認画面へ';
+            $btn = 'confirm';
         } else {
             if ($this->action == "confirm") {
-                $this->title = '確認画面';
+                $this->title = 'Confirmation screen';
                 $this->next_type = 'modify';
                 $this->next_action = 'complete';
                 $this->form->toggleFrozen(true);
-                $btn = '更新する';
-                $btn2 = '戻る';
+                $btn = 'Correct';
+                $btn2 = 'back';
             } else {
-                if ($this->action == "complete" && isset($_POST['submit2']) && $_POST['submit2'] == '戻る') {
-                    $this->title = '更新画面';
+                if ($this->action == "complete" && isset($_POST['submit2']) && $_POST['submit2'] == 'back') {
+                    $this->title = 'Correct account';
                     $this->next_type = 'modify';
                     $this->next_action = 'confirm';
-                    $btn = '確認画面へ';
+                    $btn = 'confirm';
                 } else {
-                    if ($this->action == "complete" && isset($_POST['submit']) && $_POST['submit'] == '更新する') {
+                    if ($this->action == "complete" && isset($_POST['submit']) && $_POST['submit'] == 'Correct') {
                         $userdata = $this->form->getValue();
                         if (($MemberModel->check_username($userdata) || $PrememberModel->check_username($userdata))
                             && ($_SESSION[_MEMBER_AUTHINFO]['username'] != $userdata['username'])
                         ) {
                             $this->next_type = 'modify';
                             $this->next_action = 'confirm';
-                            $this->title = '更新画面';
-                            $this->message = "メールアドレスは登録済みです。";
-                            $btn = '確認画面へ';
+                            $this->title = 'Correct account';
+                            $this->message = "Email address is already registered now";
+                            $btn = 'confirm';
                         } else {
-                            $this->title = '更新完了画面';
+                            $this->title = 'Complete';
                             $userdata['id'] = $_SESSION[_MEMBER_AUTHINFO]['id'];
                             // システム側から利用するときに利用
                             if ($this->is_system && is_object($auth)) {
@@ -262,11 +252,6 @@ class MemberController extends BaseController
                             } else {
                                 $userdata['password'] = $this->auth->get_hashed_password($userdata['password']);
                             }
-                            $userdata['birthday'] = sprintf("%04d%02d%02d",
-                                $userdata['birthday']['Y'],
-                                $userdata['birthday']['m'],
-                                $userdata['birthday']['d']);
-                            $MemberModel->modify_member($userdata);
                             $this->message = "会員情報を修正しました。";
                             $this->file = "message.tpl";
                             if ($this->is_system) {
@@ -282,7 +267,7 @@ class MemberController extends BaseController
 
         $this->form->addElement('submit', 'submit', ['value' =>$btn]);
         $this->form->addElement('submit', 'submit2', ['value' =>$btn2]);
-        $this->form->addElement('reset', 'reset', ['value' =>'取り消し']);
+        $this->form->addElement('reset', 'reset', ['value' =>'cansel']);
         $this->view_display();
     }
 

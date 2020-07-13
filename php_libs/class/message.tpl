@@ -28,7 +28,9 @@
                         {/if}
                         <br>
                         <br>
-                        {$disp_login_state}
+                        <div class="form-footer">
+                            {$disp_login_state}
+                        </div>
                         </td>
                         <div class="form-footer">
 

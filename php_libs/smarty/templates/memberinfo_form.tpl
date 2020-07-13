@@ -17,7 +17,7 @@
     <body>
         <div id="wrap">
             <div class="form-wrapper">
-                <h1>Create User</h1>
+                <h1>Input user information</h1>
                 <table>
                     <tr>
                         <td>
@@ -74,7 +74,7 @@
                 </table>
                 {$disp_login_state}
                 <div class="form-footer">
-                    <a href="{$SCRIPT_NAME}">To Login Page</a>
+                    <a href="{$SCRIPT_NAME}">Back page</a>
                 </div>
                 <br><br><br><br>
             </div>
