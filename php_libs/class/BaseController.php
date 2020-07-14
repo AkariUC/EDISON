@@ -92,13 +92,11 @@ class BaseController {
     //----------------------------------------------------
     // ログイン中の表示
     //----------------------------------------------------
-    /*
     private function disp_login_state(){
         if(is_object($this->auth) && $this->auth->check()){
             $this->login_state = ($this->is_system)? '管理者ログイン中' : '会員ログイン中';
         }
     }
-    */    
     
     //----------------------------------------------------
     // 会員情報入力項目と入力ルールの設定
@@ -106,7 +104,7 @@ class BaseController {
     public function make_form_controle(){
         $username = $this->form->addElement('text',  'username',  ['size' => 30], ['label' => 'メール（ユーザーネーム）'] );
         $password = $this->form->addElement('password',  'password',  ['size' => 30], ['label' => 'パスワード'] );
-        $name     = $this->form->addElement('text',  'last_name', ['size' => 30], ['label' => '氏'] );
+        $name     = $this->form->addElement('text',  'name', ['size' => 30], ['label' => 'おなまえ'] );
 
         $username->addRule('required', 'メールアドレスを入力してください。', null, HTML_QuickForm2_Rule::SERVER);
         $username->addRule('email',  'メールアドレスの形式が不正です。',    null, HTML_QuickForm2_Rule::SERVER);
@@ -115,7 +113,7 @@ class BaseController {
         $password->addRule('length',  'パスワードは8文字から16文字の範囲で入力してください。', [8, 16], HTML_QuickForm2_Rule::SERVER);
         $password->addRule('regex',  'パスワードは半角の英数字、記号（ _ - ! ? # $ % & ）を使ってください。', '/^[a-zA-z0-9_\-!?#$%&]*$/', HTML_QuickForm2_Rule::SERVER);
 
-        $last_name->addRule('required', 'お名前を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
+        $name->addRule('required', 'お名前を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
 
         $this->form->addRecursiveFilter('trim');
 

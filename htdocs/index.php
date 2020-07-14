@@ -8,9 +8,4 @@ require_once _ROOT_DIR . '../php_libs/init.php';
 $controller = new MemberController();
 $controller->run();
 
-// TODO: 
-// member_top.tpl 
-// MemberController.php トップ画面
-
-
 ?>

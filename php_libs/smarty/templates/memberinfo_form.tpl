@@ -42,36 +42,13 @@
                             </div>
                         </tr>
                         <tr>
-                            <div>{$form.last_name.label}</div>
-                            {if isset($form.last_name.error)}
-                            <div style="color:#ee3e52;">{$form.last_name.error}</div>
+                            <div>{$form.name.label}</div>
+                            {if isset($form.name.error)}
+                            <div style="color:#ee3e52;">{$form.name.error}</div>
                             {/if}
                             <div class="input_form">
-                                {$form.last_name.html}
+                                {$form.name.html}
                             </div>
-                        </tr>
-                        <tr>
-                            <div>{$form.first_name.label}</div>
-                            {if isset($form.first_name.error)}
-                            <div style="color:#ee3e52;">{$form.first_name.error}</div>
-                            {/if}
-                            <div class="input_form">
-                                {$form.first_name.html}
-                            </div>
-                        </tr>
-                        <tr>
-                            <div>{$form.birthday.label}</div>
-                            {if isset($form.birthday.error)}
-                            <div style="color:#ee3e52;">{$form.birthday.error}</div><br>
-                            {/if}
-                            {$form.birthday.Y.html}{$form.birthday.m.html}{$form.birthday.d.html}
-                        </tr>
-                        <tr>
-                            <div>{$form.ken.label}</div>
-                            {if isset($form.ken.error)}
-                            <div style="color:#ee3e52;">{$form.ken.error}</div><br>
-                            {/if}
-                            {$form.ken.html}
                         </tr>
 
                         <br><br><br>
