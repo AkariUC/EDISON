@@ -99,8 +99,49 @@ class MemberController extends BaseController
     //----------------------------------------------------
     // トップ画面
     //----------------------------------------------------
+    // public function screen_top()
+    // {
+    //     $this->view->assign('name', $_SESSION[_MEMBER_AUTHINFO]['name']);
+    //     $this->title = 'Edison_Top';
+    //     $this->file = 'member_top.tpl';
+    //     $this->view_display();
+    // }
+
     public function screen_top()
     {
+        $disp_search_key = "";
+        $sql_search_key = "";
+
+        // セッション変数の処理
+        unset($_SESSION[_MEMBER_AUTHINFO]);
+        if(isset($_POST['search_key']) && $_POST['search_key'] != ""){
+            unset($_SESSION['pageID']);
+            $_SESSION['search_key'] = $_POST['search_key'];
+            $disp_search_key = htmlspecialchars($_POST['search_key'], ENT_QUOTES);
+            $sql_search_key = $_POST['search_key']; 
+        }else{
+            if(isset($_POST['submit']) && $_POST['submit'] == "検索する"){
+                unset($_SESSION['search_key']); 
+            }else{
+                if(isset($_SESSION['search_key'])){
+                    $disp_search_key = htmlspecialchars($_SESSION['search_key'], ENT_QUOTES); 
+                    $sql_search_key = $_SESSION['search_key']; 
+                }
+            }
+        }
+        // データベースを操作します。
+        $MemberModel = new MemberModel();
+        list($data, $count) = $MemberModel->get_member_list($sql_search_key);
+        list($data, $links) = $this->make_page_link($data);
+    
+        $this->view->assign('count', $count);
+        $this->view->assign('data', $data);
+        $this->view->assign('search_key', $disp_search_key);
+        $this->view->assign('links', $links['all']);
+        $this->title = '管理 - 会員一覧画面';
+        $this->file = 'system_list.tpl';
+        $this->view_display();
+
         $this->view->assign('name', $_SESSION[_MEMBER_AUTHINFO]['name']);
         $this->title = 'Edison_Top';
         $this->file = 'member_top.tpl';

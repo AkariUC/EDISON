@@ -66,18 +66,18 @@ PHPを利用して電球管理アプリケーションを制作
             - link_pass : 本人確認用URLの保持
 
         - 電球設置テーブル
-        ``` 
-        DROP TABLE IF EXISTS light_installation;
-        CREATE TABLE light_installation (
-            id          MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
-            member_id   INT UNSIGNED NOT NULL,
-            light_place VARCHAR(50),
-            light_date  DATETIME,
-            light_use   INT,
-            PRIMARY KEY (id),
-            FOREIGN KEY(member_id) REFERENCES member(id) ON UPDATE CASCADE ON DELETE CASCADE
-        )ENGINE=INNODB;
-        ```
+            ``` 
+            DROP TABLE IF EXISTS light_installation;
+            CREATE TABLE light_installation (
+                id          MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                member_id   INT UNSIGNED NOT NULL,
+                light_place VARCHAR(50),
+                light_date  DATETIME,
+                light_use   INT,
+                PRIMARY KEY (id),
+                FOREIGN KEY(member_id) REFERENCES member(id) ON UPDATE CASCADE ON DELETE CASCADE
+            )ENGINE=INNODB;
+            ```
 
             - member_id   : 所持しているユーザのid (foreign key で制約)
             - light_place : 設置している場所
