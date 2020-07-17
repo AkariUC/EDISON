@@ -81,7 +81,7 @@ class PrememberModel extends BaseModel {
             $stmh = $this->pdo->prepare($sql);
             $stmh->bindValue(':username',   $userdata['username'],   PDO::PARAM_STR );
             $stmh->bindValue(':password',   $userdata['password'],   PDO::PARAM_STR );
-            $stmh->bindValue(':name',      $userdata['name'],        PDO::PARAM_STR );
+            $stmh->bindValue(':name',       $userdata['name'],       PDO::PARAM_STR );
             $stmh->execute();
             $this->pdo->commit();
         } catch (PDOException $Exception) {
