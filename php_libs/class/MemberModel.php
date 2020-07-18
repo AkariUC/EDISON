@@ -7,7 +7,7 @@ class MemberModel extends BaseModel {
     public function regist_member($userdata){
         try {
             $this->pdo->beginTransaction();
-            $sql = "INSERT  INTO member (username, password, last_name, first_name, birthday, ken, reg_date )
+            $sql = "INSERT  INTO member (username, password, name, reg_date )
             VALUES ( :username, :password, :name, now() )";
             $stmh = $this->pdo->prepare($sql);
             $stmh->bindValue(':username',   $userdata['username'],   PDO::PARAM_STR );

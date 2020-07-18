@@ -250,7 +250,7 @@ class MemberController extends BaseController
         $this->form->addDataSource(new HTML_QuickForm2_DataSource_Array(
             [
                 'username' => $_SESSION[_MEMBER_AUTHINFO]['username'],
-                'name' => $_SESSION[_MEMBER_AUTHINFO]['last_name'],
+                'name' => $_SESSION[_MEMBER_AUTHINFO]['name'],
             ]
         ));
 
@@ -392,7 +392,6 @@ EOM;
         $add_header = "";
 
         //$add_header .= "From: xxxx@xxxxxxx\nCc: xxxx@xxxxxxx";
-
         mb_send_mail($to, $subject, $message, $add_header);
 
     }

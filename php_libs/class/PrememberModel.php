@@ -7,12 +7,12 @@ class PrememberModel extends BaseModel {
     public function regist_premember($userdata){
         try {
             $this->pdo->beginTransaction();
-            $sql = "INSERT  INTO premember (username, password, last_name, first_name, birthday, ken, link_pass, reg_date )
+            $sql = "INSERT  INTO premember (username, password, name, link_pass, reg_date )
             VALUES ( :username, :password, :name, :link_pass, now() )";
             $stmh = $this->pdo->prepare($sql);
             $stmh->bindValue(':username',   $userdata['username'],   PDO::PARAM_STR );
             $stmh->bindValue(':password',   $userdata['password'],   PDO::PARAM_STR );
-            $stmh->bindValue(':name',       $userdata['name'],  PDO::PARAM_STR );
+            $stmh->bindValue(':name',       $userdata['name'],       PDO::PARAM_STR );
             $stmh->bindValue(':link_pass',  $userdata['link_pass'],  PDO::PARAM_STR );
             $stmh->execute();
             $this->pdo->commit();
@@ -76,12 +76,12 @@ class PrememberModel extends BaseModel {
             $stmh = $this->pdo->prepare($sql);
             $stmh->bindValue(':id', $userdata['id'], PDO::PARAM_INT );
             $stmh->execute();
-            $sql = "INSERT  INTO member (username, password, last_name, first_name, birthday, ken, reg_date )
+            $sql = "INSERT  INTO member (username, password, name, reg_date )
             VALUES ( :username, :password, :name, now() )";
             $stmh = $this->pdo->prepare($sql);
             $stmh->bindValue(':username',   $userdata['username'],   PDO::PARAM_STR );
             $stmh->bindValue(':password',   $userdata['password'],   PDO::PARAM_STR );
-            $stmh->bindValue(':name',       $userdata['name'],       PDO::PARAM_STR );
+            $stmh->bindValue(':name',      $userdata['name'],  PDO::PARAM_STR );
             $stmh->execute();
             $this->pdo->commit();
         } catch (PDOException $Exception) {

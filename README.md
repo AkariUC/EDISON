@@ -57,7 +57,7 @@ PHPを利用して電球管理アプリケーションを制作
                 username   	VARCHAR(50),
                 password   	VARCHAR(128),
                 name     	VARCHAR(50),
-                link_pass   VARCHAR(50),
+                link_pass   VARCHAR(128),
                 reg_date   	DATETIME,
                 PRIMARY KEY (id)
             ) ENGINE=INNODB;

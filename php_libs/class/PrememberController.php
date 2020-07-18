@@ -3,6 +3,7 @@
 class PrememberController extends BaseController {
 
     public function run(){
+
         if (isset($_GET['username']) && isset($_GET['link_pass'])){
         // 必要なパラメータがある
             // データベースを操作します。
