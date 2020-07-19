@@ -41,6 +41,11 @@ PHPを利用して電球管理アプリケーションを制作
                 PRIMARY KEY (id)
             ) ENGINE=INNODB;
             ```
+            - さらに，テスト用のユーザ情報も登録しておく
+                - 内部のデータは適宜入力
+            ```
+            INSERT INTO member (username, password, name, reg_date, cansel_date) VALUES ('', '', '', now(), NULL);
+            ```
 
             - username      : メールアドレスを格納
             - name          : 自分の名前
