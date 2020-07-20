@@ -44,7 +44,7 @@ PHPを利用して電球管理アプリケーションを制作
             - さらに，テスト用のユーザ情報も登録しておく
                 - 内部のデータは適宜入力
             ```
-            INSERT INTO member (username, password, name, reg_date, cansel_date) VALUES ('', '', '', now(), NULL);
+            INSERT INTO member (username, password, name, reg_date, cancel_date) VALUES ('user', '$2y$10$jUaIP/qDbBFIJFEPfd/W2ewsCIzoGPrbxCaHOdWjwQFUNRGoKT4DS', 'akari', now(), NULL);
             ```
 
             - username      : メールアドレスを格納

@@ -80,6 +80,8 @@ class MemberController extends BaseController
         $this->view_display();
     }
 
+
+
     public function do_authenticate()
     {
         // データベースを操作します。
@@ -137,10 +139,6 @@ class MemberController extends BaseController
         $this->view->assign('count', $count);
         $this->view->assign('data', $data);
         $this->view->assign('search_key', $disp_search_key);
-        $this->view->assign('links', $links['all']);
-        $this->title = '管理 - 会員一覧画面';
-        $this->file = 'system_list.tpl';
-        $this->view_display();
 
         $this->view->assign('name', $_SESSION[_MEMBER_AUTHINFO]['name']);
         $this->title = 'Edison_Top';
@@ -381,7 +379,6 @@ class MemberController extends BaseController
     下のリンクにアクセスして会員登録を完了してください。
 
     http://{$_SERVER['SERVER_NAME']}{$path}/premember.php?username={$userdata['username']}&link_pass={$userdata['link_pass']}
-
     このメールに覚えがない場合はメールを削除してください。
 
 
@@ -392,7 +389,9 @@ EOM;
         $add_header = "";
 
         //$add_header .= "From: xxxx@xxxxxxx\nCc: xxxx@xxxxxxx";
+
         mb_send_mail($to, $subject, $message, $add_header);
 
     }
 }
+

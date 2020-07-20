@@ -131,7 +131,7 @@ class BaseController {
 
         $add_pageID = "";
         if(isset($_GET['pageID']) && $_GET['pageID'] != ""){
-            $add_pageID         = '&pageID=' . $_GET['pageID'];
+            $add_pageID = '&pageID=' . $_GET['pageID'];
             $_SESSION['pageID'] = $_GET['pageID'];
         }else if(isset($_SESSION['pageID']) && $_SESSION['pageID'] != ""){
             $add_pageID = '&pageID=' . $_SESSION['pageID'];
@@ -156,9 +156,6 @@ class BaseController {
             'delta'     => 10,
             'itemData'  => $data
         ];
-
-        // Slindingを使用する場合
-        //$pager = new Pager_Sliding($params);
 
         // Jumpingを使用する場合
         $pager = new Pager_Jumping($params);
