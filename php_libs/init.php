@@ -124,6 +124,8 @@ require_once( _CLASS_DIR      . "BaseModel.php");
 require_once( _CLASS_DIR      . "Auth.php");
 require_once( _CLASS_DIR      . "MemberController.php");
 require_once( _CLASS_DIR      . "MemberModel.php");
+require_once( _CLASS_DIR      . "LightInstallationController.php");
+require_once( _CLASS_DIR      . "LightInstallationModel.php");
 require_once( _CLASS_DIR      . "PrememberController.php");
 require_once( _CLASS_DIR      . "PrememberModel.php");
 

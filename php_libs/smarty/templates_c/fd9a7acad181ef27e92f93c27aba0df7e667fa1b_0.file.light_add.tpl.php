@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-07-14 12:54:03
-  from "/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/memberinfo_form.tpl" */
+/* Smarty version 3.1.30, created on 2020-07-22 18:37:56
+  from "/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/light_add.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5f0d2c5b014213_19654459',
+  'unifunc' => 'content_5f1808f4813d76_36213788',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '5340eb005b4f1900009ab024f60a5153b663c6cf' => 
+    'fd9a7acad181ef27e92f93c27aba0df7e667fa1b' => 
     array (
-      0 => '/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/memberinfo_form.tpl',
-      1 => 1594698842,
+      0 => '/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/light_add.tpl',
+      1 => 1595410603,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f0d2c5b014213_19654459 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f1808f4813d76_36213788 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -36,7 +36,7 @@ function content_5f0d2c5b014213_19654459 (Smarty_Internal_Template $_smarty_tpl)
  src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"><?php echo '</script'; ?>
 >
 
-        <link rel="stylesheet" type="text/css" href="/css/memberinfo_form.css">
+        <link rel="stylesheet" type="text/css" href="/css/light_add.css">
 
         <?php echo '<script'; ?>
  type="text/javascript" src="js/quickform.js" async><?php echo '</script'; ?>
@@ -46,7 +46,7 @@ function content_5f0d2c5b014213_19654459 (Smarty_Internal_Template $_smarty_tpl)
     <body>
         <div id="wrap" style="text-align:center;">
             <div class="form-wrapper">
-                <h1>Input user information</h1>
+                <h1>Add Light data</h1>
 
                 <?php echo $_smarty_tpl->tpl_vars['message']->value;?>
 
@@ -56,38 +56,50 @@ function content_5f0d2c5b014213_19654459 (Smarty_Internal_Template $_smarty_tpl)
 
                     <table>
                         <tr>
-                            <div><?php echo $_smarty_tpl->tpl_vars['form']->value['username']['label'];?>
+                            <div><?php echo $_smarty_tpl->tpl_vars['form']->value['light_place']['label'];?>
 </div>
-                            <?php if (isset($_smarty_tpl->tpl_vars['form']->value['username']['error'])) {?>
-                            <div style="color:#ee3e52;"><?php echo $_smarty_tpl->tpl_vars['form']->value['username']['error'];?>
+                            <?php if (isset($_smarty_tpl->tpl_vars['form']->value['light_place']['error'])) {?>
+                            <div style="color:#ee3e52;"><?php echo $_smarty_tpl->tpl_vars['form']->value['light_place']['error'];?>
 </div>
                             <?php }?>
                             <div class="input_form">
-                                <?php echo $_smarty_tpl->tpl_vars['form']->value['username']['html'];?>
+                                <?php echo $_smarty_tpl->tpl_vars['form']->value['light_place']['html'];?>
 
                             </div>
                         </tr>
                         <tr>
-                            <div><?php echo $_smarty_tpl->tpl_vars['form']->value['password']['label'];?>
+                            <div><?php echo $_smarty_tpl->tpl_vars['form']->value['light_type']['label'];?>
 </div>
-                            <?php if (isset($_smarty_tpl->tpl_vars['form']->value['password']['error'])) {?>
-                            <div style="color:#ee3e52;"><?php echo $_smarty_tpl->tpl_vars['form']->value['password']['error'];?>
+                            <?php if (isset($_smarty_tpl->tpl_vars['form']->value['light_type']['error'])) {?>
+                            <div style="color:#ee3e52;"><?php echo $_smarty_tpl->tpl_vars['form']->value['light_type']['error'];?>
 </div>
                             <?php }?>
                             <div class="input_form">
-                                <?php echo $_smarty_tpl->tpl_vars['form']->value['password']['html'];?>
+                                <?php echo $_smarty_tpl->tpl_vars['form']->value['light_type']['html'];?>
 
                             </div>
                         </tr>
                         <tr>
-                            <div><?php echo $_smarty_tpl->tpl_vars['form']->value['name']['label'];?>
+                            <div><?php echo $_smarty_tpl->tpl_vars['form']->value['light_type']['label'];?>
 </div>
-                            <?php if (isset($_smarty_tpl->tpl_vars['form']->value['name']['error'])) {?>
-                            <div style="color:#ee3e52;"><?php echo $_smarty_tpl->tpl_vars['form']->value['name']['error'];?>
+                            <?php if (isset($_smarty_tpl->tpl_vars['form']->value['light_type']['error'])) {?>
+                            <div style="color:#ee3e52;"><?php echo $_smarty_tpl->tpl_vars['form']->value['light_type']['error'];?>
 </div>
                             <?php }?>
                             <div class="input_form">
-                                <?php echo $_smarty_tpl->tpl_vars['form']->value['name']['html'];?>
+                                <?php echo $_smarty_tpl->tpl_vars['form']->value['light_type']['html'];?>
+
+                            </div>
+                        </tr>
+                        <tr>
+                            <div><?php echo $_smarty_tpl->tpl_vars['form']->value['light_use']['label'];?>
+</div>
+                            <?php if (isset($_smarty_tpl->tpl_vars['form']->value['light_use']['error'])) {?>
+                            <div style="color:#ee3e52;"><?php echo $_smarty_tpl->tpl_vars['form']->value['light_use']['error'];?>
+</div>
+                            <?php }?>
+                            <div class="input_form">
+                                <?php echo $_smarty_tpl->tpl_vars['form']->value['light_use']['html'];?>
 
                             </div>
                         </tr>

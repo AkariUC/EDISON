@@ -21,9 +21,7 @@
                 <h1>{$title}</h1>
                 <div class="form-footer">
                     {$message}
-                </div>
-                <div class="form-footer">
-                    <a href="index.php">To Login Page</a>
+                    元のページに戻って Login しなおしてください．
                 </div>
             </div>
 

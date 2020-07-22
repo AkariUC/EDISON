@@ -59,7 +59,7 @@ class PrememberModel extends BaseModel {
             $stmh->execute();
             $data = $stmh->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $Exception) {
-            print "ERROR：" . $Exception->getMessage();
+            print "エラー：" . $Exception->getMessage();
         }
         return $data;
     }

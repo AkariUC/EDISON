@@ -13,6 +13,7 @@ class LightInstallationModel extends BaseModel {
                 // 連想配列
                 $light_installation_array[$row['id']]['member_id']   = $row['member_id'];
                 $light_installation_array[$row['id']]['light_place'] = $row['light_id'];
+                $light_installation_array[$row['id']]['light_type']  = $row['light_type'];
                 $light_installation_array[$row['id']]['light_date']  = $row['light_date'];
                 $light_installation_array[$row['id']]['light_use']   = $row['light_use'];
             }
@@ -25,31 +26,26 @@ class LightInstallationModel extends BaseModel {
     //----------------------------------------------------
     // 電球一覧取得処理
     //----------------------------------------------------
-    public function get_member_list($search_key){
+    public function get_light_list($id){
         $sql = <<<EOS
 SELECT
-        li.id as id,
-        m.member_id    as member_id,
+        li.id          as id,
+        m.id           as member_id,
         li.light_place as light_place,
+        li.light_type  as light_type,
         li.light_date  as light_date,
-        li.light_use   as light_use,
+        li.light_use   as light_use 
 FROM
-        light_place li,
-        member m
+        light_installation li,
+        member m 
 WHERE
         li.member_id = m.id
-
 EOS;
-        if($search_key != ""){
-            $sql .= " AND ( li.light_place like :light_place ) ";
-        }
+
+        $sql .= " AND ( m.id  like $id) ";
 
         try {
             $stmh = $this->pdo->prepare($sql);
-            if($search_key != ""){
-                $search_key = '%' . $search_key . '%'; 
-                $stmh->bindValue(':light_place',  $search_key, PDO::PARAM_STR );
-            }
             $stmh->execute();
             // 検索件数を取得
             $count = $stmh->rowCount();
@@ -68,4 +64,35 @@ EOS;
         return [$data, $count];
     }
 
+    public function add_light($lightdata){
+        try {
+            $this->pdo->beginTransaction();
+            $sql = "INSERT  INTO light_installation (member_id, light_place, light_type, light_date, light_use )
+            VALUES ( :member_id, :light_place, :light_type, :light_date, light_use )";
+            $stmh = $this->pdo->prepare($sql);
+            $stmh->bindValue(':member_id',   $userdata['member_id'],   PDO::PARAM_STR );
+            $stmh->bindValue(':light_place', $userdata['light_place'], PDO::PARAM_STR );
+            $stmh->bindValue(':light_type',  $userdata['light_type'],  PDO::PARAM_STR );
+            $stmh->bindValue(':light_date',  $userdata['light_date'],  PDO::PARAM_STR );
+            $stmh->bindValue(':light_use',   $userdata['light_use'],   PDO::PARAM_STR );
+            $stmh->execute();
+            $this->pdo->commit();
+        } catch (PDOException $Exception) {
+            $this->pdo->rollBack();
+            print "ERROR：" . $Exception->getMessage();
+        }
+    }
+
 }
+
+
+//CREATE TABLE light_installation (
+//    id          MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+//    member_id   INT UNSIGNED NOT NULL,
+//    light_place VARCHAR(50),
+//    light_type  INT,
+//    light_date  DATETIME,
+//    light_use   INT,
+//    PRIMARY KEY (id),
+//    FOREIGN KEY(member_id) REFERENCES member(id) ON UPDATE CASCADE ON DELETE CASCADE
+//)ENGINE=INNODB;

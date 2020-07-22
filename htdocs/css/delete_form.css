@@ -86,7 +86,7 @@ form {
     text-align: center;
     text-transform: uppercase;
     transition: background 0.3s ease-in-out;
-    width: 100%;
+    width: 70%;
 }
 
 .button:hover {
@@ -94,7 +94,7 @@ form {
 }
 
 .form-footer {
-    font-size: 1em;
+    font-size: 1.5em;
     padding: 2em 0;
     text-align: center;
 }

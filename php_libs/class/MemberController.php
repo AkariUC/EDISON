@@ -40,6 +40,8 @@ class MemberController extends BaseController
             case "delete":
                 $this->screen_delete();
                 break;
+            case "addLight":
+                $this->screen_addLight();
             default:
                 $this->screen_top();
         }
@@ -109,37 +111,17 @@ class MemberController extends BaseController
     //     $this->view_display();
     // }
 
+
+
     public function screen_top()
     {
-        $disp_search_key = "";
-        $sql_search_key = "";
-
-        // セッション変数の処理
-        unset($_SESSION[_MEMBER_AUTHINFO]);
-        if(isset($_POST['search_key']) && $_POST['search_key'] != ""){
-            unset($_SESSION['pageID']);
-            $_SESSION['search_key'] = $_POST['search_key'];
-            $disp_search_key = htmlspecialchars($_POST['search_key'], ENT_QUOTES);
-            $sql_search_key = $_POST['search_key']; 
-        }else{
-            if(isset($_POST['submit']) && $_POST['submit'] == "検索する"){
-                unset($_SESSION['search_key']); 
-            }else{
-                if(isset($_SESSION['search_key'])){
-                    $disp_search_key = htmlspecialchars($_SESSION['search_key'], ENT_QUOTES); 
-                    $sql_search_key = $_SESSION['search_key']; 
-                }
-            }
-        }
         // データベースを操作します。
-        $MemberModel = new MemberModel();
-        list($data, $count) = $MemberModel->get_member_list($sql_search_key);
+        $LightinstallationModel = new LightinstallationModel();
+        list($data, $count) = $LightinstallationModel->get_light_list($_SESSION[_MEMBER_AUTHINFO]['id']);
         list($data, $links) = $this->make_page_link($data);
     
         $this->view->assign('count', $count);
         $this->view->assign('data', $data);
-        $this->view->assign('search_key', $disp_search_key);
-
         $this->view->assign('name', $_SESSION[_MEMBER_AUTHINFO]['name']);
         $this->title = 'Edison_Top';
         $this->file = 'member_top.tpl';
@@ -320,6 +302,93 @@ class MemberController extends BaseController
 
 
     //----------------------------------------------------
+    // 電球情報の追加
+    //----------------------------------------------------
+    public function screen_addLight($auth = "")
+    {
+        $btn = "";
+        $btn2 = "";
+        $this->file = "light_add.tpl";
+
+        // データベースを操作します。
+        $MemberModel = new MemberModel();
+        $LightInstallationModel = new LightInstallationModel();
+        if ($this->is_system && $this->action == "form") {
+            $_SESSION[_MEMBER_AUTHINFO] = $MemberModel->get_member_data_id($_GET['id']);
+        }
+        // if (isset($_GET["id"])) {
+        //     $this->form->add_light($_GET['id']);
+        // }
+        if (!$this->form->validate()) {
+            $this->action = "form";
+        }
+
+        if ($this->action == "form") {
+            $this->title = 'Create account';
+            $this->next_type = 'regist';
+            $this->next_action = 'confirm';
+            $btn = 'confirm';
+        } else {
+            if ($this->action == "confirm") {
+                $this->title = 'Confirmation screen';
+                $this->next_type = 'regist';
+                $this->next_action = 'complete';
+                $this->form->toggleFrozen(true);
+                $btn = 'Sign Up';
+                $btn2 = 'Back';
+            } else {
+                if ($this->action == "complete" && isset($_POST['submit2']) && $_POST['submit2'] == 'Back') {
+                    $this->title = 'Create account';
+                    $this->next_type = 'regist';
+                    $this->next_action = 'confirm';
+                    $btn = 'confirm';
+                } else {
+                    if ($this->action == "complete" && isset($_POST['submit']) && $_POST['submit'] == 'Sign Up') {
+                        // データベースを操作します。
+                        $PrememberModel = new PrememberModel();
+                        // データベースを操作します。
+                        $MemberModel = new MemberModel();
+                        $userdata = $this->form->getValue();
+                        if ($MemberModel->check_username($userdata) || $PrememberModel->check_username($userdata)) {
+                            $this->title = 'Create account';
+                            $this->message = "Email address is already registered now";
+                            $this->next_type = 'regist';
+                            $this->next_action = 'confirm';
+                            $btn = 'confirm';
+                        } else {
+                            // システム側から利用するときに利用
+                            if ($this->is_system && is_object($auth)) {
+                                $userdata['password'] = $auth->get_hashed_password($userdata['password']);
+                            } else {
+                                $userdata['password'] = $this->auth->get_hashed_password($userdata['password']);
+                            }
+                            if ($this->is_system) {
+                                $MemberModel->regist_member($userdata);
+                                $this->title = 'Complete';
+                                $this->message = "Completion of registration";
+                            } else {
+                                $userdata['link_pass'] = hash('sha256', uniqid(rand(), 1));
+                                $PrememberModel->regist_premember($userdata);
+                                $this->mail_to_premember($userdata);
+                                $this->title = 'Send mail...';
+                                $this->message = "登録されたメールアドレスへ確認のためのメールを送信しました。<br>";
+                                $this->message .= "メール本文に記載されているURLにアクセスして<br>登録を完了してください。<br>";
+                            }
+                            $this->file = "message.tpl";
+                        }
+                    }
+                }
+            }
+        }
+        $this->form->addElement('submit', 'submit', ['value' =>$btn]);
+        $this->form->addElement('submit', 'submit2', ['value' =>$btn2]);
+        $this->form->addElement('reset', 'reset', ['value' =>'cansel']);
+        $this->view_display();
+    }
+
+
+
+    //----------------------------------------------------
     // 削除画面
     //----------------------------------------------------
     public function screen_delete()
@@ -393,5 +462,6 @@ EOM;
         mb_send_mail($to, $subject, $message, $add_header);
 
     }
+    
 }
 

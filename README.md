@@ -77,13 +77,18 @@ PHPを利用して電球管理アプリケーションを制作
                 id          MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
                 member_id   INT UNSIGNED NOT NULL,
                 light_place VARCHAR(50),
+                light_type  INT,
                 light_date  DATETIME,
                 light_use   INT,
                 PRIMARY KEY (id),
                 FOREIGN KEY(member_id) REFERENCES member(id) ON UPDATE CASCADE ON DELETE CASCADE
             )ENGINE=INNODB;
             ```
-
+            - さらに，テスト用のユーザ情報も登録しておく
+                - 内部のデータは適宜入力
+            ```
+            INSERT INTO light_installation (id, member_id, light_place, light_type, light_date, light_use) VALUES (1, 3, '洗面所', 2, 20200405, 20);
+            ```
             - member_id   : 所持しているユーザのid (foreign key で制約)
             - light_place : 設置している場所
             - light_date  : 設置した日

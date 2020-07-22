@@ -9,7 +9,7 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="/css/memberinfo_form.css">
+        <link rel="stylesheet" type="text/css" href="/css/light_add.css">
 
         <script type="text/javascript" src="js/quickform.js" async></script>
     </head>
@@ -17,37 +17,46 @@
     <body>
         <div id="wrap" style="text-align:center;">
             <div class="form-wrapper">
-                <h1>Input user information</h1>
+                <h1>Add Light data</h1>
 
                 {$message}
                 <form {$form.attributes}>
                     {$form.hidden}
                     <table>
                         <tr>
-                            <div>{$form.username.label}</div>
-                            {if isset($form.username.error)}
-                            <div style="color:#ee3e52;">{$form.username.error}</div>
+                            <div>{$form.light_place.label}</div>
+                            {if isset($form.light_place.error)}
+                            <div style="color:#ee3e52;">{$form.light_place.error}</div>
                             {/if}
                             <div class="input_form">
-                                {$form.username.html}
+                                {$form.light_place.html}
                             </div>
                         </tr>
                         <tr>
-                            <div>{$form.password.label}</div>
-                            {if isset($form.password.error)}
-                            <div style="color:#ee3e52;">{$form.password.error}</div>
+                            <div>{$form.light_type.label}</div>
+                            {if isset($form.light_type.error)}
+                            <div style="color:#ee3e52;">{$form.light_type.error}</div>
                             {/if}
                             <div class="input_form">
-                                {$form.password.html}
+                                {$form.light_type.html}
                             </div>
                         </tr>
                         <tr>
-                            <div>{$form.name.label}</div>
-                            {if isset($form.name.error)}
-                            <div style="color:#ee3e52;">{$form.name.error}</div>
+                            <div>{$form.light_type.label}</div>
+                            {if isset($form.light_type.error)}
+                            <div style="color:#ee3e52;">{$form.light_type.error}</div>
                             {/if}
                             <div class="input_form">
-                                {$form.name.html}
+                                {$form.light_type.html}
+                            </div>
+                        </tr>
+                        <tr>
+                            <div>{$form.light_use.label}</div>
+                            {if isset($form.light_use.error)}
+                            <div style="color:#ee3e52;">{$form.light_use.error}</div>
+                            {/if}
+                            <div class="input_form">
+                                {$form.light_use.html}
                             </div>
                         </tr>
 

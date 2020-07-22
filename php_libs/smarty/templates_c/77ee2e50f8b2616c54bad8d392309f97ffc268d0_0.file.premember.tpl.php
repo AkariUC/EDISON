@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-06-21 23:13:13
+/* Smarty version 3.1.30, created on 2020-07-22 15:45:20
   from "/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/premember.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5eef6af963dba6_50350746',
+  'unifunc' => 'content_5f17e0808ad0a6_38187287',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '77ee2e50f8b2616c54bad8d392309f97ffc268d0' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/premember.tpl',
-      1 => 1498222872,
+      1 => 1595400136,
       2 => 'file',
     ),
   ),
@@ -20,37 +20,51 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eef6af963dba6_50350746 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f17e0808ad0a6_38187287 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<title><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </title>
-</head>
-<body>
-<div style="text-align:center;">
-<hr>
-<strong><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
-</strong>
-<hr>
-    <table>
-      <tr>
-        
-      <td> <a href="index.php">トップページへ</a>
-      </td>
-        
-      <td>
-  		<?php echo $_smarty_tpl->tpl_vars['message']->value;?>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"><?php echo '</script'; ?>
+>
 
+        <?php echo '<script'; ?>
+ type="text/javascript" src="/js/sample.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ type="text/javascript" src="/js/login.js"><?php echo '</script'; ?>
+>
+        <link rel="stylesheet" type="text/css" href="/css/login.css">
+    </head>
 
-        </td>
-      </tr>
-    </table>
-</div>
-<?php if (($_smarty_tpl->tpl_vars['debug_str']->value)) {?><pre><?php echo $_smarty_tpl->tpl_vars['debug_str']->value;?>
+    <body>
+        <div id="wrap">
+            <div class="form-wrapper">
+                <h1><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
+</h1>
+                <div class="form-footer">
+                    <?php echo $_smarty_tpl->tpl_vars['message']->value;?>
+
+                    元のページに戻って Login しなおしてください．
+                </div>
+            </div>
+
+            <?php if (($_smarty_tpl->tpl_vars['debug_str']->value)) {?>
+            <pre><?php echo $_smarty_tpl->tpl_vars['debug_str']->value;?>
 </pre><?php }?>
-</body>
-</html>
-<?php }
+
+    </body>
+
+</html><?php }
 }

@@ -27,9 +27,6 @@
                         <br>
                         <br>
                         <br>
-                        <br>
-                        <br>
-                        <br>
 
                         <div class="button-panel">
                             <input type="submit" class="button" title="Delete" value="Delete" />
@@ -38,24 +35,10 @@
                         <input type="hidden" name="action" value="{$action}">
 
                     </form>
-
-                    {if ($is_system) }
-                    <br>
-                    <br>
-                    [ <a href="{$SCRIPT_NAME}?type=list&action=form{$add_pageID}">会員一覧</a> ]
-                    {/if}
-
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                     <br>
                     <br>
 
                     <div class="form-footer">
-                        {$disp_login_state}
-                        <br>
-                        <br>
                         <p><a href="{$SCRIPT_NAME}">Back Page</a></p>
                     </div>
                 </div>
