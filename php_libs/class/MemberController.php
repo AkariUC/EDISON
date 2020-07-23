@@ -306,9 +306,30 @@ class MemberController extends BaseController
     //----------------------------------------------------
     public function screen_addLight($auth = "")
     {
+        // $btn = "";
+        // $btn2 = "";
+        // $this->file = "light_add.tpl";
+
+        // // データベースを操作します。
+        // $MemberModel = new MemberModel();
+        // $LightInstallationModel = new LightInstallationModel();
+        // if ($this->is_system && $this->action == "form") {
+        //     $_SESSION[_MEMBER_AUTHINFO] = $MemberModel->get_member_data_id($_GET['id']);
+        // }
+
+        // $this->view->assign("light_place", "設置場所");
+        // $this->view->assign("light_type",  "電球の種類");
+        // $this->view->assign("light_data",  "設置日");
+        // $this->view->assign("light_use",   "1日の使用時間(min)");
+
+        // $this->form->addElement('submit', 'submit', ['value' => "OK"]);
+        // $this->form->addElement('reset', 'reset', ['value' =>'cansel']);
+        // $this->view_display();
         $btn = "";
         $btn2 = "";
         $this->file = "light_add.tpl";
+
+        $this->make_form_controle_light();
 
         // データベースを操作します。
         $MemberModel = new MemberModel();
@@ -324,7 +345,7 @@ class MemberController extends BaseController
         }
 
         if ($this->action == "form") {
-            $this->title = 'Create account';
+            $this->title = 'Add light data';
             $this->next_type = 'regist';
             $this->next_action = 'confirm';
             $btn = 'confirm';
@@ -334,48 +355,26 @@ class MemberController extends BaseController
                 $this->next_type = 'regist';
                 $this->next_action = 'complete';
                 $this->form->toggleFrozen(true);
-                $btn = 'Sign Up';
+                $btn = 'OK';
                 $btn2 = 'Back';
             } else {
                 if ($this->action == "complete" && isset($_POST['submit2']) && $_POST['submit2'] == 'Back') {
-                    $this->title = 'Create account';
+                    $this->title = 'Add light data';
                     $this->next_type = 'regist';
                     $this->next_action = 'confirm';
                     $btn = 'confirm';
                 } else {
-                    if ($this->action == "complete" && isset($_POST['submit']) && $_POST['submit'] == 'Sign Up') {
+                    if ($this->action == "complete" && isset($_POST['submit']) && $_POST['submit'] == 'OK') {
                         // データベースを操作します。
-                        $PrememberModel = new PrememberModel();
+                        $LightInstallationModel = new LightInstallationModel();
                         // データベースを操作します。
                         $MemberModel = new MemberModel();
-                        $userdata = $this->form->getValue();
-                        if ($MemberModel->check_username($userdata) || $PrememberModel->check_username($userdata)) {
-                            $this->title = 'Create account';
-                            $this->message = "Email address is already registered now";
-                            $this->next_type = 'regist';
-                            $this->next_action = 'confirm';
-                            $btn = 'confirm';
-                        } else {
-                            // システム側から利用するときに利用
-                            if ($this->is_system && is_object($auth)) {
-                                $userdata['password'] = $auth->get_hashed_password($userdata['password']);
-                            } else {
-                                $userdata['password'] = $this->auth->get_hashed_password($userdata['password']);
-                            }
-                            if ($this->is_system) {
-                                $MemberModel->regist_member($userdata);
-                                $this->title = 'Complete';
-                                $this->message = "Completion of registration";
-                            } else {
-                                $userdata['link_pass'] = hash('sha256', uniqid(rand(), 1));
-                                $PrememberModel->regist_premember($userdata);
-                                $this->mail_to_premember($userdata);
-                                $this->title = 'Send mail...';
-                                $this->message = "登録されたメールアドレスへ確認のためのメールを送信しました。<br>";
-                                $this->message .= "メール本文に記載されているURLにアクセスして<br>登録を完了してください。<br>";
-                            }
-                            $this->file = "message.tpl";
-                        }
+                        $light_data = $this->form->getValue();    
+                        $LightInstallationModel->add_light($light_data);
+                        $this->title = 'Complete';
+                        $this->message = "Completion of registration";
+                        $this->file = "message.tpl";
+                    
                     }
                 }
             }

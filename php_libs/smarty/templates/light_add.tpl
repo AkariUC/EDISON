@@ -42,12 +42,12 @@
                             </div>
                         </tr>
                         <tr>
-                            <div>{$form.light_type.label}</div>
-                            {if isset($form.light_type.error)}
-                            <div style="color:#ee3e52;">{$form.light_type.error}</div>
+                            <div>{$form.light_date.label}</div>
+                            {if isset($form.light_date.error)}
+                            <div style="color:#ee3e52;">{$form.light_date.error}</div>
                             {/if}
                             <div class="input_form">
-                                {$form.light_type.html}
+                                {$form.light_date.html}
                             </div>
                         </tr>
                         <tr>

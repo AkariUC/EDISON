@@ -118,6 +118,26 @@ class BaseController {
         $this->form->addRecursiveFilter('trim');
 
     }
+
+
+    //----------------------------------------------------
+    // 電球情報入力項目と入力ルールの設定
+    //----------------------------------------------------
+    public function make_form_controle_light(){
+        $light_place = $this->form->addElement('text',  'light_place',  ['size' => 30], ['label' => '設置場所'] );
+        $light_type = $this->form->addElement('text',  'light_type',  ['size' => 30], ['label' => '電球の種類'] );
+        $light_date     = $this->form->addElement('text',  'light_date', ['size' => 30], ['label' => '設置日'] );
+        $light_use    = $this->form->addElement('text',  'light_use', ['size' => 30], ['label' => '1日の使用時間(min)'] );
+
+
+        $light_place->addRule('required', '設置場所を記入してください。', null, HTML_QuickForm2_Rule::SERVER);
+        $light_type->addRule('required',  '電球の種類を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
+        $light_date->addRule('required',  '設置日を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
+        $light_use->addRule('required',  '1日の使用時間を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
+
+        $this->form->addRecursiveFilter('trim');
+
+    }
     
     
     //----------------------------------------------------
