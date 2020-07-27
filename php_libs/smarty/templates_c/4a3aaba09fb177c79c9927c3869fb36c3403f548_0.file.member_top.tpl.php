@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-07-24 15:08:12
+/* Smarty version 3.1.30, created on 2020-07-27 16:45:11
   from "/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/member_top.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5f1a7acc1b35e4_87323093',
+  'unifunc' => 'content_5f1e8607210f32_01914437',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4a3aaba09fb177c79c9927c3869fb36c3403f548' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/member_top.tpl',
-      1 => 1595570732,
+      1 => 1595835906,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f1a7acc1b35e4_87323093 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f1e8607210f32_01914437 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/Applications/XAMPP/xamppfiles/php_libs/smarty/libs/plugins/modifier.date_format.php';
 ?>
 <!DOCTYPE html>
@@ -60,7 +60,6 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/Applications/XAM
                         <th>設置場所</th>
                         <th>電球の型</th>
                         <th>設置日</th>
-                        <th></th>
 
                         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'item');
@@ -74,10 +73,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
 </td>
                             <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['item']->value['light_date'],"%Y&#24180;%m&#26376;%d&#26085;");?>
 </td>
-                            <td><a href="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
-?type=delete&action=confirm&id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];
-echo $_smarty_tpl->tpl_vars['add_pageID']->value;?>
-">delete</a></td>
                         </tr>
                         <?php
 }

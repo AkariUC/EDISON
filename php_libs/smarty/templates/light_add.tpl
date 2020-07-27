@@ -73,11 +73,11 @@
                         <input type="hidden" name="type" value="{$type}">
                         <input type="hidden" name="action" value="{$action}">
 
-                        {if ( $form.submit2.attribs.value != "" ) }
+                        {* {if ( $form.submit2.attribs.value != "" ) }
                         {$form.submit2.html}　
-                        {else}
+                        {else} *}
                         {$form.reset.html}　
-                        {/if}
+                        {* {/if} *}
                         {$form.submit.html}
 
                     </table>

@@ -28,14 +28,12 @@
                         <th>設置場所</th>
                         <th>電球の型</th>
                         <th>設置日</th>
-                        <th></th>
 
                         {foreach item=item from=$data}
                         <tr>
                             <td>{$item.light_place|escape:"html"}</td>
                             <td>{$item.light_type|escape:"html"}</td>
                             <td>{$item.light_date|date_format:"%Y&#24180;%m&#26376;%d&#26085;"}</td>
-                            <td><a href="{$SCRIPT_NAME}?type=delete&action=confirm&id={$item.id}{$add_pageID}">delete</a></td>
                         </tr>
                         {/foreach}
                     </table>

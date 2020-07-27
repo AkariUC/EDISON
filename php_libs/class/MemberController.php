@@ -106,6 +106,61 @@ class MemberController extends BaseController
     //----------------------------------------------------
     public function screen_top()
     {
+        // $light_place = $_POST['light_place'];
+        // echo("test");
+        // echo($light_place);
+        // $MemberModel = new MemberModel();
+        // if ($_POST['light_place'] != NULL) {
+        //     $light_place = $_POST['light_place'];
+        //     $light_type  = $_POST['light_type'];
+        //     $light_date  = $_POST['light_date'];
+        //     $light_use   = $_POST['light_use'];
+        //     try {
+        //         // echo('test');
+        //         $this->pdo = new PDO(_DSN, _DB_USER, _DB_PASS);
+        //         $this->pdo->beginTransaction();
+        //         $sql = "INSERT INTO light_installation (member_id, light_place, light_type, light_date, light_use )
+        //         VALUES ( :member_id, :light_place, :light_type, :light_date, :light_use )";
+        //         $stmh = $this->pdo->prepare($sql);
+        //         $stmh->bindValue(':member_id',   $_SESSION['id'],          PDO::PARAM_STR );
+        //         $stmh->bindValue(':light_place', $light_place, PDO::PARAM_STR );
+        //         $stmh->bindValue(':light_type',  $light_type,  PDO::PARAM_STR );
+        //         $stmh->bindValue(':light_date',  $light_date,  PDO::PARAM_STR );
+        //         $stmh->bindValue(':light_use',   $light_use,   PDO::PARAM_STR );
+        //         $stmh->execute();
+        //         $this->pdo->commit();
+        //     } catch (PDOException $Exception) {
+        //         $this->pdo->rollBack();
+        //         print "ERROR：" . $Exception->getMessage();
+        //     }
+        // }
+        // echo $_SESSION['userinfo']['id'];
+        if ($_POST['light_place'] != NULL) {
+            $light_place = $_POST['light_place'];
+            $light_type  = $_POST['light_type'];
+            $light_date  = $_POST['light_date']['Y'];
+            $light_date .= '-';
+            if ($_POST['light_date']['M'] < 10){
+                $light_date .= '0';
+                $light_date .= $_POST['light_date']['M'];
+            } else {
+                $light_date .= $_POST['light_date']['M'];
+            }
+            $light_date .= '-';
+            if ($_POST['light_date']['d'] < 10){
+                $light_date .= '0';
+                $light_date .= $_POST['light_date']['d'];
+            } else {
+                $light_date .= $_POST['light_date']['d'];
+            }            
+            $light_use   = $_POST['light_use'];
+
+            $LightInstallationModel = new LightInstallationModel();
+            if (isset($_SESSION['userinfo']['id'])) {
+                $LightInstallationModel->add_light($light_place,$light_type, $light_date,$light_use, $_SESSION['userinfo']['id']);
+            }
+        }
+
         // データベースを操作します。
         $LightinstallationModel = new LightinstallationModel();
         list($data, $count) = $LightinstallationModel->get_light_list($_SESSION[_MEMBER_AUTHINFO]['id']);
@@ -325,10 +380,28 @@ class MemberController extends BaseController
         $this->next_type = 'regist';
         $this->next_action = 'confirm';
 
-        $this->form->addElement('submit', 'submit', ['value' =>$btn]);
-        $this->form->addElement('submit', 'submit2', ['value' =>$btn2]);
+        $this->form->addElement('submit', 'submit', ['value' =>'OK']);
         $this->form->addElement('reset', 'reset', ['value' =>'cansel']);
         $this->view_display();
+
+        $light_place = $_POST['light_place'];
+        echo("test");
+        echo($light_place);
+        // $light_type  = $_POST['light_type'];
+        // $light_date  = $_POST['light_date'];
+        // $light_use   = $_POST['light_use'];
+
+        // try {
+        //     $this->pdo->beginTransaction();
+        //     $sql = "INSERT INTO light_installation (member_id, light_place, light_type, light_date, light_use )
+        //     VALUES ( :member_id, :light_place, :light_type, :light_date, :light_use )";
+        //     $stmh = $this->pdo->prepare($sql);
+        //     $params = array(':member_id' => $_GET['id'], ':light_place' => $_POST['light_place'], ':light_type' => $_POST['light_date'] , ':light_use' => $_POST['light_use']);
+        //     $stmt->execute($params);
+        // } catch (PDOException $Exception) {
+        //     $this->pdo->rollBack();
+        //     print "ERROR：" . $Exception->getMessage();
+        // }
 
         // if ($this->action == "form") {
         //     $this->title = 'Add light data';
@@ -351,19 +424,19 @@ class MemberController extends BaseController
         //             $btn = 'confirm';
         //         } else {
         //             if ($this->action == "complete" && isset($_POST['submit']) && $_POST['submit'] == 'OK') {
-        //                 // // データベースを操作します。
-        //                 // $LightInstallationModel = new LightInstallationModel();
-        //                 // $MemberModel = new MemberModel();
-        //                 // $lightdata = $this->form->getValue();
-        //                 // // $light_place = $_POST['light_place'];
-        //                 // // $light_type  = $_POST['light_type'];
-        //                 // // $light_date  = $_POST['light_date'];
-        //                 // // $light_use   = $_POST['light_use'];
-        //                 // // $lightdata   = array($light_place, $light_type, $light_date, $light_use);
-        //                 // echo($lightdata);
-        //                 // if (isset($_GET["id"])) {
-        //                 //     $this->form->add_light($lightdata, $_GET['id']);
-        //                 // }
+        //                 // データベースを操作します。
+        //                 $LightInstallationModel = new LightInstallationModel();
+        //                 $MemberModel = new MemberModel();
+        //                 $lightdata = $this->form->getValue();
+        //                 // $light_place = $_POST['light_place'];
+        //                 // $light_type  = $_POST['light_type'];
+        //                 // $light_date  = $_POST['light_date'];
+        //                 // $light_use   = $_POST['light_use'];
+        //                 // $lightdata   = array($light_place, $light_type, $light_date, $light_use);
+        //                 echo($lightdata);
+        //                 if (isset($_SESSION["id"])) {
+        //                     $this->form->add_light($lightdata, $_SESSION['id']);
+        //                 }
         //                 $this->title = 'Complete';
         //                 $this->message = "Completion of registration";
         //                 $this->file = "message.tpl";

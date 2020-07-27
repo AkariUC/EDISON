@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-07-24 15:03:42
+/* Smarty version 3.1.30, created on 2020-07-27 14:46:28
   from "/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/light_add.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5f1a79be72f8f3_43188507',
+  'unifunc' => 'content_5f1e6a34872df5_37443714',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fd9a7acad181ef27e92f93c27aba0df7e667fa1b' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/light_add.tpl',
-      1 => 1595570621,
+      1 => 1595828788,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f1a79be72f8f3_43188507 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f1e6a34872df5_37443714 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -121,13 +121,10 @@ echo $_smarty_tpl->tpl_vars['form']->value['light_date']['d']['html'];?>
                         <input type="hidden" name="action" value="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 ">
 
-                        <?php if (($_smarty_tpl->tpl_vars['form']->value['submit2']['attribs']['value'] != '')) {?>
-                        <?php echo $_smarty_tpl->tpl_vars['form']->value['submit2']['html'];?>
-　
-                        <?php } else { ?>
+                        
                         <?php echo $_smarty_tpl->tpl_vars['form']->value['reset']['html'];?>
 　
-                        <?php }?>
+                        
                         <?php echo $_smarty_tpl->tpl_vars['form']->value['submit']['html'];?>
 
 
