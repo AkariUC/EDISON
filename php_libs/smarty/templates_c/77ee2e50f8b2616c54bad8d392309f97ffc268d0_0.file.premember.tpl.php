@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-07-22 15:45:20
+/* Smarty version 3.1.30, created on 2020-07-23 12:20:26
   from "/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/premember.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5f17e0808ad0a6_38187287',
+  'unifunc' => 'content_5f1901fa130915_73490229',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '77ee2e50f8b2616c54bad8d392309f97ffc268d0' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/premember.tpl',
-      1 => 1595400136,
+      1 => 1595474424,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f17e0808ad0a6_38187287 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f1901fa130915_73490229 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -56,7 +56,6 @@ function content_5f17e0808ad0a6_38187287 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="form-footer">
                     <?php echo $_smarty_tpl->tpl_vars['message']->value;?>
 
-                    元のページに戻って Login しなおしてください．
                 </div>
             </div>
 

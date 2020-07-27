@@ -24,20 +24,13 @@
 
                     <form {$form.attributes}>
                         {$message}
-                        <br>
-                        <br>
-                        <br>
-
-                        <div class="button-panel">
-                            <input type="submit" class="button" title="Delete" value="Delete" />
-                        </div>
+                        <br><br>
+                        <input type="submit" class="button" title="Delete" value="Delete" />
                         <input type="hidden" name="type" value="{$type}">
                         <input type="hidden" name="action" value="{$action}">
 
                     </form>
                     <br>
-                    <br>
-
                     <div class="form-footer">
                         <p><a href="{$SCRIPT_NAME}">Back Page</a></p>
                     </div>

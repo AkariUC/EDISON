@@ -42,6 +42,7 @@ class MemberController extends BaseController
                 break;
             case "addLight":
                 $this->screen_addLight();
+                break;
             default:
                 $this->screen_top();
         }
@@ -103,16 +104,6 @@ class MemberController extends BaseController
     //----------------------------------------------------
     // トップ画面
     //----------------------------------------------------
-    // public function screen_top()
-    // {
-    //     $this->view->assign('name', $_SESSION[_MEMBER_AUTHINFO]['name']);
-    //     $this->title = 'Edison_Top';
-    //     $this->file = 'member_top.tpl';
-    //     $this->view_display();
-    // }
-
-
-
     public function screen_top()
     {
         // データベースを操作します。
@@ -306,29 +297,17 @@ class MemberController extends BaseController
     //----------------------------------------------------
     public function screen_addLight($auth = "")
     {
-        // $btn = "";
-        // $btn2 = "";
-        // $this->file = "light_add.tpl";
-
-        // // データベースを操作します。
-        // $MemberModel = new MemberModel();
-        // $LightInstallationModel = new LightInstallationModel();
-        // if ($this->is_system && $this->action == "form") {
-        //     $_SESSION[_MEMBER_AUTHINFO] = $MemberModel->get_member_data_id($_GET['id']);
-        // }
-
-        // $this->view->assign("light_place", "設置場所");
-        // $this->view->assign("light_type",  "電球の種類");
-        // $this->view->assign("light_data",  "設置日");
-        // $this->view->assign("light_use",   "1日の使用時間(min)");
-
-        // $this->form->addElement('submit', 'submit', ['value' => "OK"]);
-        // $this->form->addElement('reset', 'reset', ['value' =>'cansel']);
-        // $this->view_display();
         $btn = "";
         $btn2 = "";
         $this->file = "light_add.tpl";
 
+        $date_defaults = [
+            'Y' => date('Y'),
+            'M' => date('M'),
+            'd' => date('d'),
+        ];
+
+        $this->form->addDataSource(new HTML_QuickForm2_DataSource_Array(['light_date' => $date_defaults]));
         $this->make_form_controle_light();
 
         // データベースを操作します。
@@ -337,52 +316,66 @@ class MemberController extends BaseController
         if ($this->is_system && $this->action == "form") {
             $_SESSION[_MEMBER_AUTHINFO] = $MemberModel->get_member_data_id($_GET['id']);
         }
-        // if (isset($_GET["id"])) {
-        //     $this->form->add_light($_GET['id']);
-        // }
+
         if (!$this->form->validate()) {
             $this->action = "form";
         }
 
-        if ($this->action == "form") {
-            $this->title = 'Add light data';
-            $this->next_type = 'regist';
-            $this->next_action = 'confirm';
-            $btn = 'confirm';
-        } else {
-            if ($this->action == "confirm") {
-                $this->title = 'Confirmation screen';
-                $this->next_type = 'regist';
-                $this->next_action = 'complete';
-                $this->form->toggleFrozen(true);
-                $btn = 'OK';
-                $btn2 = 'Back';
-            } else {
-                if ($this->action == "complete" && isset($_POST['submit2']) && $_POST['submit2'] == 'Back') {
-                    $this->title = 'Add light data';
-                    $this->next_type = 'regist';
-                    $this->next_action = 'confirm';
-                    $btn = 'confirm';
-                } else {
-                    if ($this->action == "complete" && isset($_POST['submit']) && $_POST['submit'] == 'OK') {
-                        // データベースを操作します。
-                        $LightInstallationModel = new LightInstallationModel();
-                        // データベースを操作します。
-                        $MemberModel = new MemberModel();
-                        $light_data = $this->form->getValue();    
-                        $LightInstallationModel->add_light($light_data);
-                        $this->title = 'Complete';
-                        $this->message = "Completion of registration";
-                        $this->file = "message.tpl";
-                    
-                    }
-                }
-            }
-        }
+        $this->title = 'Add light data';
+        $this->next_type = 'regist';
+        $this->next_action = 'confirm';
+
         $this->form->addElement('submit', 'submit', ['value' =>$btn]);
         $this->form->addElement('submit', 'submit2', ['value' =>$btn2]);
         $this->form->addElement('reset', 'reset', ['value' =>'cansel']);
         $this->view_display();
+
+        // if ($this->action == "form") {
+        //     $this->title = 'Add light data';
+        //     $this->next_type = 'regist';
+        //     $this->next_action = 'confirm';
+        //     $btn = 'confirm';
+        // } else {
+        //     if ($this->action == "confirm") {
+        //         $this->title = 'Confirmation screen';
+        //         $this->next_type = 'regist';
+        //         $this->next_action = 'complete';
+        //         $this->form->toggleFrozen(true);
+        //         $btn = 'OK';
+        //         $btn2 = 'Back';
+        //     } else {
+        //         if ($this->action == "complete" && isset($_POST['submit2']) && $_POST['submit2'] == 'Back') {
+        //             $this->title = 'Add light data';
+        //             $this->next_type = 'regist';
+        //             $this->next_action = 'confirm';
+        //             $btn = 'confirm';
+        //         } else {
+        //             if ($this->action == "complete" && isset($_POST['submit']) && $_POST['submit'] == 'OK') {
+        //                 // // データベースを操作します。
+        //                 // $LightInstallationModel = new LightInstallationModel();
+        //                 // $MemberModel = new MemberModel();
+        //                 // $lightdata = $this->form->getValue();
+        //                 // // $light_place = $_POST['light_place'];
+        //                 // // $light_type  = $_POST['light_type'];
+        //                 // // $light_date  = $_POST['light_date'];
+        //                 // // $light_use   = $_POST['light_use'];
+        //                 // // $lightdata   = array($light_place, $light_type, $light_date, $light_use);
+        //                 // echo($lightdata);
+        //                 // if (isset($_GET["id"])) {
+        //                 //     $this->form->add_light($lightdata, $_GET['id']);
+        //                 // }
+        //                 $this->title = 'Complete';
+        //                 $this->message = "Completion of registration";
+        //                 $this->file = "message.tpl";
+                        
+        //             }
+        //         }
+        //     }
+        // }
+        // $this->form->addElement('submit', 'submit', ['value' =>$btn]);
+        // $this->form->addElement('submit', 'submit2', ['value' =>$btn2]);
+        // $this->form->addElement('reset', 'reset', ['value' =>'cansel']);
+        // $this->view_display();
     }
 
 

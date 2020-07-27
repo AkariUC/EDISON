@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-07-22 18:37:48
+/* Smarty version 3.1.30, created on 2020-07-24 15:08:12
   from "/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/member_top.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5f1808eca067b1_41185256',
+  'unifunc' => 'content_5f1a7acc1b35e4_87323093',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4a3aaba09fb177c79c9927c3869fb36c3403f548' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/member_top.tpl',
-      1 => 1595410666,
+      1 => 1595570732,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f1808eca067b1_41185256 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f1a7acc1b35e4_87323093 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/Applications/XAMPP/xamppfiles/php_libs/smarty/libs/plugins/modifier.date_format.php';
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,6 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/Applications/XAM
         <div id="wrap">
             <div class="form-wrapper" style="text-align:center;">
                 <h1>Top page</h1>
-
                 <div class="form-rooter">
                     <?php echo $_smarty_tpl->tpl_vars['name']->value;?>
 さんのとっぷ画面です<br>

@@ -108,11 +108,9 @@ class BaseController {
 
         $username->addRule('required', 'メールアドレスを入力してください。', null, HTML_QuickForm2_Rule::SERVER);
         $username->addRule('email',  'メールアドレスの形式が不正です。',    null, HTML_QuickForm2_Rule::SERVER);
-
         $password->addRule('required',  'パスワードを入力してください。',      null, HTML_QuickForm2_Rule::SERVER);
         $password->addRule('length',  'パスワードは8文字から16文字の範囲で入力してください。', [8, 16], HTML_QuickForm2_Rule::SERVER);
         $password->addRule('regex',  'パスワードは半角の英数字、記号（ _ - ! ? # $ % & ）を使ってください。', '/^[a-zA-z0-9_\-!?#$%&]*$/', HTML_QuickForm2_Rule::SERVER);
-
         $name->addRule('required', 'お名前を入力してください。', null, HTML_QuickForm2_Rule::SERVER);
 
         $this->form->addRecursiveFilter('trim');
@@ -124,11 +122,17 @@ class BaseController {
     // 電球情報入力項目と入力ルールの設定
     //----------------------------------------------------
     public function make_form_controle_light(){
-        $light_place = $this->form->addElement('text',  'light_place',  ['size' => 30], ['label' => '設置場所'] );
-        $light_type = $this->form->addElement('text',  'light_type',  ['size' => 30], ['label' => '電球の種類'] );
-        $light_date     = $this->form->addElement('text',  'light_date', ['size' => 30], ['label' => '設置日'] );
-        $light_use    = $this->form->addElement('text',  'light_use', ['size' => 30], ['label' => '1日の使用時間(min)'] );
-
+        $LightDetailModel = new LightDetailModel;
+        $light_array = $LightDetailModel->get_light_data();
+        $options = [
+            'format'    => 'Ymd',
+            'minYear'   => 2000,
+            'maxYear'   => date("Y"),
+        ];
+        $light_place = $this->form->addElement('text',  'light_place',  ['size' => 30],   ['label' => '設置場所'] );
+        $light_type  = $this->form->addElement('select','light_type',   ['size' => NULL], ['label' => '電球の種類', 'options' => $light_array] );
+        $light_date  = $this->form->addElement('date',  'light_date',   ['size' => NULL], ['label' => '設置日'] );
+        $light_use   = $this->form->addElement('text',  'light_use',    ['size' => 30],   ['label' => '1日の使用時間(min)'] + $options );
 
         $light_place->addRule('required', '設置場所を記入してください。', null, HTML_QuickForm2_Rule::SERVER);
         $light_type->addRule('required',  '電球の種類を入力してください。', null, HTML_QuickForm2_Rule::SERVER);

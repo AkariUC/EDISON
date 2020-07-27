@@ -64,17 +64,17 @@ EOS;
         return [$data, $count];
     }
 
-    public function add_light($lightdata){
+    public function add_light($lightdata, $id){
         try {
             $this->pdo->beginTransaction();
-            $sql = "INSERT  INTO light_installation (member_id, light_place, light_type, light_date, light_use )
-            VALUES ( :member_id, :light_place, :light_type, :light_date, light_use )";
+            $sql = "INSERT INTO light_installation (member_id, light_place, light_type, light_date, light_use )
+            VALUES ( :member_id, :light_place, :light_type, :light_date, :light_use )";
             $stmh = $this->pdo->prepare($sql);
-            $stmh->bindValue(':member_id',   $userdata['member_id'],   PDO::PARAM_STR );
-            $stmh->bindValue(':light_place', $userdata['light_place'], PDO::PARAM_STR );
-            $stmh->bindValue(':light_type',  $userdata['light_type'],  PDO::PARAM_STR );
-            $stmh->bindValue(':light_date',  $userdata['light_date'],  PDO::PARAM_STR );
-            $stmh->bindValue(':light_use',   $userdata['light_use'],   PDO::PARAM_STR );
+            $stmh->bindValue(':member_id',   $id,                       PDO::PARAM_STR );
+            $stmh->bindValue(':light_place', $lightdata['light_place'], PDO::PARAM_STR );
+            $stmh->bindValue(':light_type',  $lightdata['light_type'],  PDO::PARAM_STR );
+            $stmh->bindValue(':light_date',  $lightdata['light_date'],  PDO::PARAM_STR );
+            $stmh->bindValue(':light_use',   $lightdata['light_use'],   PDO::PARAM_STR );
             $stmh->execute();
             $this->pdo->commit();
         } catch (PDOException $Exception) {

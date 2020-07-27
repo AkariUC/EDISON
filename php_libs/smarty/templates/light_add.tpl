@@ -9,7 +9,7 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="/css/light_add.css">
+        <link rel="stylesheet" type="text/css" href="/css/memberinfo_form.css">
 
         <script type="text/javascript" src="js/quickform.js" async></script>
     </head>
@@ -24,46 +24,51 @@
                     {$form.hidden}
                     <table>
                         <tr>
-                            <div>{$form.light_place.label}</div>
+                            <div class="text-form">{$form.light_place.label}</div>
                             {if isset($form.light_place.error)}
                             <div style="color:#ee3e52;">{$form.light_place.error}</div>
                             {/if}
-                            <div class="input_form">
+                            <div class="form-item">
                                 {$form.light_place.html}
                             </div>
                         </tr>
+                        <br><br>
                         <tr>
-                            <div>{$form.light_type.label}</div>
-                            {if isset($form.light_type.error)}
-                            <div style="color:#ee3e52;">{$form.light_type.error}</div>
-                            {/if}
-                            <div class="input_form">
+                            <div class="text-form">{$form.light_type.label}</div>
+                            <div class="form-item">
+                                {if isset($form.light_type.error)}
+                                <div style="color:red; font-size: smaller;">{$form.light_type.error}</div><br>
+                                {/if}
                                 {$form.light_type.html}
+                                {* {$light_place} *}
                             </div>
                         </tr>
+                        <br><br>
                         <tr>
-                            <div>{$form.light_date.label}</div>
-                            {if isset($form.light_date.error)}
-                            <div style="color:#ee3e52;">{$form.light_date.error}</div>
-                            {/if}
-                            <div class="input_form">
-                                {$form.light_date.html}
+                            <div class="text-form">{$form.light_date.label}</div>
+                            <div class="form-item">
+                                {if isset($form.light_date.error)}
+                                <div style="color:red; font-size: smaller;">{$form.light_date.error}</div><br>
+                                {/if}
+                                {$form.light_date.Y.html}{$form.light_date.M.html}{$form.light_date.d.html}
+                                {* {$light_date.Y}{$lihgt_date.M}{$light_date.d} *}
                             </div>
                         </tr>
+                        <br><br>
                         <tr>
-                            <div>{$form.light_use.label}</div>
+                            <div class="text-form">{$form.light_use.label}</div>
                             {if isset($form.light_use.error)}
                             <div style="color:#ee3e52;">{$form.light_use.error}</div>
                             {/if}
-                            <div class="input_form">
+                            <div class="form-item">
                                 {$form.light_use.html}
+                                {* {$light_use} *}
                             </div>
                         </tr>
 
                         <br><br><br>
 
-
-                        <td>&nbsp; </td>
+                        {* <td>&nbsp; </td> *}
 
                         <input type="hidden" name="type" value="{$type}">
                         <input type="hidden" name="action" value="{$action}">

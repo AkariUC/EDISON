@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-07-22 15:22:05
+/* Smarty version 3.1.30, created on 2020-07-23 12:16:44
   from "/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/delete_form.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5f17db0d17cdd4_72084603',
+  'unifunc' => 'content_5f19011c53c2b1_43335503',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ebe4f55545e7c10d5b5f72c481c2a15788c66c4e' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/delete_form.tpl',
-      1 => 1595398924,
+      1 => 1595474201,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f17db0d17cdd4_72084603 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f19011c53c2b1_43335503 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -59,13 +59,8 @@ function content_5f17db0d17cdd4_72084603 (Smarty_Internal_Template $_smarty_tpl)
 >
                         <?php echo $_smarty_tpl->tpl_vars['message']->value;?>
 
-                        <br>
-                        <br>
-                        <br>
-
-                        <div class="button-panel">
-                            <input type="submit" class="button" title="Delete" value="Delete" />
-                        </div>
+                        <br><br>
+                        <input type="submit" class="button" title="Delete" value="Delete" />
                         <input type="hidden" name="type" value="<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 ">
                         <input type="hidden" name="action" value="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
@@ -73,8 +68,6 @@ function content_5f17db0d17cdd4_72084603 (Smarty_Internal_Template $_smarty_tpl)
 
                     </form>
                     <br>
-                    <br>
-
                     <div class="form-footer">
                         <p><a href="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
 ">Back Page</a></p>

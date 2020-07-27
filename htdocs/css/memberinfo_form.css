@@ -59,14 +59,14 @@ form {
     color: #666;
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
-    height: 50px;
+    height: 30px;
     transition: border-color 0.3s;
-    width: 100%;
+    width: 70%;
 }
 
 .form-item input:focus {
-    border-bottom: 2px solid #c0c0c0;
-    outline: none;
+    border-bottom: 2px solid #fc8600;
+    outline: 0;
 }
 
 .button-panel {
@@ -92,21 +92,6 @@ form {
 .button:hover {
     background: #FC8F00;
 }
-
-
-/* .form-add {
-    background: #FC8F00;
-    border: none;
-    color: #fff;
-    height: 20px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-transform: uppercase;
-    transition: background 0.3s ease-in-out;
-    width: 40%;
-} */
 
 .form-add {
     background: #FC8F00;
@@ -150,31 +135,46 @@ form {
     border-bottom: 1px dotted #8c8c8c;
 }
 
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-}
-
-table tr {
-    border-bottom: solid 1px #eee;
+input[type="submit"] {
+    background: #FC8F00;
+    border: none;
+    color: #fff;
     cursor: pointer;
-}
-
-table tr:hover {
-    background-color: #f8eca9;
-}
-
-table th,
-table td {
+    height: 50px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
     text-align: center;
-    width: 25%;
-    padding: 15px 0;
+    text-transform: uppercase;
+    transition: background 0.3s ease-in-out;
+    width: 40%;
+    border: solid 5px #fc8600;
+    border-radius: 15px;
 }
 
-table td.icon {
-    background-size: 35px;
-    background-position: left 5px center;
-    background-repeat: no-repeat;
-    padding-left: 30px;
+input[type="submit"]:hover {
+    border: solid 5px #fcb41a;
+    border-radius: 15px;
+}
+
+input[type="reset"] {
+    display: inline-block;
+    padding: 1em 2em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: dashed 1px #67c5ff;
+    background: #f2fcff;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+input[type="reset"]:hover {
+    background: #cbedff;
+    color: #FFF;
+}
+
+.text-form {
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 30px;
 }

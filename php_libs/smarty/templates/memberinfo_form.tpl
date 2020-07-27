@@ -24,29 +24,31 @@
                     {$form.hidden}
                     <table>
                         <tr>
-                            <div>{$form.username.label}</div>
+                            <div class="text-form">{$form.username.label}</div>
                             {if isset($form.username.error)}
                             <div style="color:#ee3e52;">{$form.username.error}</div>
                             {/if}
-                            <div class="input_form">
+                            <div class="form-item">
                                 {$form.username.html}
                             </div>
                         </tr>
+                        <br><br>
                         <tr>
-                            <div>{$form.password.label}</div>
+                            <div class="text-form">{$form.password.label}</div>
                             {if isset($form.password.error)}
                             <div style="color:#ee3e52;">{$form.password.error}</div>
                             {/if}
-                            <div class="input_form">
+                            <div class="form-item">
                                 {$form.password.html}
                             </div>
                         </tr>
+                        <br><br>
                         <tr>
-                            <div>{$form.name.label}</div>
+                            <div class="text-form">{$form.name.label}</div>
                             {if isset($form.name.error)}
                             <div style="color:#ee3e52;">{$form.name.error}</div>
                             {/if}
-                            <div class="input_form">
+                            <div class="form-item">
                                 {$form.name.html}
                             </div>
                         </tr>

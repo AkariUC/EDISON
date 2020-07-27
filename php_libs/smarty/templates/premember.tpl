@@ -21,7 +21,6 @@
                 <h1>{$title}</h1>
                 <div class="form-footer">
                     {$message}
-                    元のページに戻って Login しなおしてください．
                 </div>
             </div>
 

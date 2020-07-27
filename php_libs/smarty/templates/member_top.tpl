@@ -18,7 +18,6 @@
         <div id="wrap">
             <div class="form-wrapper" style="text-align:center;">
                 <h1>Top page</h1>
-
                 <div class="form-rooter">
                     {$name}さんのとっぷ画面です<br>
                 </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-07-22 22:13:44
+/* Smarty version 3.1.30, created on 2020-07-23 13:15:09
   from "/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/memberinfo_form.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5f183b88627f73_32984015',
+  'unifunc' => 'content_5f190ecd399bb5_15124953',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5340eb005b4f1900009ab024f60a5153b663c6cf' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/php_libs/smarty/templates/memberinfo_form.tpl',
-      1 => 1595422102,
+      1 => 1595477708,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f183b88627f73_32984015 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f190ecd399bb5_15124953 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -56,37 +56,39 @@ function content_5f183b88627f73_32984015 (Smarty_Internal_Template $_smarty_tpl)
 
                     <table>
                         <tr>
-                            <div><?php echo $_smarty_tpl->tpl_vars['form']->value['username']['label'];?>
+                            <div class="text-form"><?php echo $_smarty_tpl->tpl_vars['form']->value['username']['label'];?>
 </div>
                             <?php if (isset($_smarty_tpl->tpl_vars['form']->value['username']['error'])) {?>
                             <div style="color:#ee3e52;"><?php echo $_smarty_tpl->tpl_vars['form']->value['username']['error'];?>
 </div>
                             <?php }?>
-                            <div class="input_form">
+                            <div class="form-item">
                                 <?php echo $_smarty_tpl->tpl_vars['form']->value['username']['html'];?>
 
                             </div>
                         </tr>
+                        <br><br>
                         <tr>
-                            <div><?php echo $_smarty_tpl->tpl_vars['form']->value['password']['label'];?>
+                            <div class="text-form"><?php echo $_smarty_tpl->tpl_vars['form']->value['password']['label'];?>
 </div>
                             <?php if (isset($_smarty_tpl->tpl_vars['form']->value['password']['error'])) {?>
                             <div style="color:#ee3e52;"><?php echo $_smarty_tpl->tpl_vars['form']->value['password']['error'];?>
 </div>
                             <?php }?>
-                            <div class="input_form">
+                            <div class="form-item">
                                 <?php echo $_smarty_tpl->tpl_vars['form']->value['password']['html'];?>
 
                             </div>
                         </tr>
+                        <br><br>
                         <tr>
-                            <div><?php echo $_smarty_tpl->tpl_vars['form']->value['name']['label'];?>
+                            <div class="text-form"><?php echo $_smarty_tpl->tpl_vars['form']->value['name']['label'];?>
 </div>
                             <?php if (isset($_smarty_tpl->tpl_vars['form']->value['name']['error'])) {?>
                             <div style="color:#ee3e52;"><?php echo $_smarty_tpl->tpl_vars['form']->value['name']['error'];?>
 </div>
                             <?php }?>
-                            <div class="input_form">
+                            <div class="form-item">
                                 <?php echo $_smarty_tpl->tpl_vars['form']->value['name']['html'];?>
 
                             </div>
