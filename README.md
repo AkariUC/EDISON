@@ -41,12 +41,6 @@ PHPを利用して電球管理アプリケーションを制作
                 PRIMARY KEY (id)
             ) ENGINE=INNODB;
             ```
-            - さらに，テスト用のユーザ情報も登録しておく
-                - 内部のデータは適宜入力
-            ```
-            INSERT INTO member (username, password, name, reg_date, cancel_date) VALUES ('user', '$2y$10$jUaIP/qDbBFIJFEPfd/W2ewsCIzoGPrbxCaHOdWjwQFUNRGoKT4DS', 'akari', now(), NULL);
-            ```
-
             - username      : メールアドレスを格納
             - name          : 自分の名前
             - reg_date      : 登録日
@@ -67,7 +61,6 @@ PHPを利用して電球管理アプリケーションを制作
                 PRIMARY KEY (id)
             ) ENGINE=INNODB;
             ```
-
             - link_pass : 本人確認用URLの保持
 
         - 電球設置テーブル
@@ -84,11 +77,6 @@ PHPを利用して電球管理アプリケーションを制作
                 FOREIGN KEY(member_id) REFERENCES member(id) ON UPDATE CASCADE ON DELETE CASCADE
             )ENGINE=INNODB;
             ```
-            - さらに，テスト用のユーザ情報も登録しておく
-                - 内部のデータは適宜入力
-            ```
-            INSERT INTO light_installation (id, member_id, light_place, light_type, light_date, light_use) VALUES (1, 3, '洗面所', 2, 20200405, 20);
-            ```
             - member_id   : 所持しているユーザのid (foreign key で制約)
             - light_place : 設置している場所
             - light_date  : 設置した日
@@ -104,7 +92,6 @@ PHPを利用して電球管理アプリケーションを制作
                 PRIMARY KEY (id)
             )ENGINE=INNODB;
             ```
-
             - light_name : 電球の名前
             - light_last : 電球がどれだけもつか([hour]単位で入力してもらう)
 
@@ -117,6 +104,14 @@ PHPを利用して電球管理アプリケーションを制作
             INSERT  INTO light_detail (id, light_last, light_name) VALUES(  3, 30000, 'LED電球');
             INSERT  INTO light_detail (id, light_last, light_name) VALUES(  4,  2000, 'ハロゲン電球');
             ```
+
+
+# sumple insert
+- ユーザー名 : sample
+- パスワード : pass
+```
+INSERT  INTO member (username, password, name, reg_date, cancel)  VALUES('user',   '$2y$10$jUaIP/qDbBFIJFEPfd/W2ewsCIzoGPrbxCaHOdWjwQFUNRGoKT4DS',   'sample', now(),NULL);
+```
 
 ### splashについて
 
