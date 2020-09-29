@@ -1,5 +1,9 @@
 # jQuery でスプラッシュ画面表示
 
+## 参照元
+
+https://github.com/MoriKeigoYUZU/splash
+
 ## 参考先
 
 https://gimmicklog.com/jquery/278/
